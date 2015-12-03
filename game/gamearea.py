@@ -11,23 +11,33 @@ class GameArea():
 		Init Game Area class
 		'''
 
+		self.score = 0
+		self.positive = 10
+		self.negative = -20
+		self.syncKey = False
+
+		pyglet.clock.set_fps_limit(30)
+
+		self.components = []
 		self.window = pyglet.window.Window(width, height)
+		self.width = width
+		self.height = height
 		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 50, anchor_x = 'center')
 
 		self.description = pyglet.text.Label(description, x = 30, y = height - 90)
 		self.descriptiontext = description
 
-		self.score = pyglet.text.Label('0', font_size=20, font_name='Times New Roman', x = width - 50, y = self.heading.y)
-		self.scorebox = draw.rectangle(width - 70, self.score.y + 40, 60, 50, filled=False)
+		self.lblScore = pyglet.text.Label(str(self.score), font_size=20, font_name='Times New Roman', x = width - 50, y = self.heading.y)
+		self.scorebox = draw.rectangle(width - 70, self.lblScore.y + 40, 60, 50, filled=False)
+
+		self.components = [self.heading, self.description, self.lblScore, self.scorebox]
 
 
 		@self.window.event
 		def on_draw():
 			self.window.clear()
-			self.heading.draw()
-			self.description.draw()
-			self.score.draw()
-			self.scorebox.draw() # not pyglet.graphics instance mind you
+			for obj in self.components:
+				obj.draw()
 
 
 	def show(self):
@@ -46,6 +56,15 @@ class GameArea():
 		else:
 			self.description.text = ''
 		self.description.draw()
+
+
+	def updateScore(self, by):
+		'''
+		Updates the score
+		'''
+		self.score += by
+		self.lblScore.text = str(self.score)
+		self.lblScore.draw()
 
 
 
