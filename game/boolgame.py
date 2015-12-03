@@ -1,7 +1,7 @@
 from game import gamearea
 from utils import draw, motion
-# import pyglet
 from pyglet.window import key
+from pyglet import clock
 
 
 class BoolGame(gamearea.GameArea):
@@ -23,24 +23,18 @@ class BoolGame(gamearea.GameArea):
 
 		@self.window.event
 		def on_key_press(symbol, modifiers):
+			if not self.gameStarted:
+				self.descStatus(False)
+				self.gameStarted = True
+				clock.schedule_once(self.endGame, self.gameTime)
+				self.addNew()
+				return
 			if self.syncKey:
 				return
 			if symbol == key.LEFT:
-				print('left arrow key')
-				if not self.gameStarted:
-					self.descStatus(False)
-					self.gameStarted = True
-					self.addNew()
-				else:
-					self.submit(False)
+				self.submit(False)
 			elif symbol == key.RIGHT:
-				print('Right arrow key')
-				if not self.gameStarted:
-					self.descStatus(False)
-					self.gameStarted = True
-					self.addNew()
-				else:
-					self.submit(True)
+				self.submit(True)
 
 
 	def submit(self, ans):
@@ -54,15 +48,12 @@ class BoolGame(gamearea.GameArea):
 			print('incorrect')
 			self.updateScore(self.negative)
 		self.addNew()
+		return
 
 
 	def addNew(self):
-		pass
-
+		return
 
 	def start(self):
 		self.show()
-		self.gameStarted = False
-		while not self.gameStarted:
-			pass
-		self.addNew()
+		return

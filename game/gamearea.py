@@ -1,6 +1,7 @@
 import pyglet
 from utils import draw
 
+
 class GameArea():
 	'''
 	GameArea class.. create a new game
@@ -15,6 +16,7 @@ class GameArea():
 		self.positive = 10
 		self.negative = -20
 		self.syncKey = False
+		self.gameTime = 5
 
 		pyglet.clock.set_fps_limit(30)
 
@@ -27,8 +29,8 @@ class GameArea():
 		self.description = pyglet.text.Label(description, x = 30, y = height - 90)
 		self.descriptiontext = description
 
-		self.lblScore = pyglet.text.Label(str(self.score), font_size=20, font_name='Times New Roman', x = width - 50, y = self.heading.y)
-		self.scorebox = draw.rectangle(width - 70, self.lblScore.y + 40, 60, 50, filled=False)
+		self.lblScore = pyglet.text.Label(str(self.score), font_size=20, font_name='Lucida Console', x = width - 80, y = self.heading.y)
+		self.scorebox = draw.rectangle(width - 90, self.lblScore.y + 40, 60, 50, filled=False)
 
 		self.components = [self.heading, self.description, self.lblScore, self.scorebox]
 
@@ -66,6 +68,12 @@ class GameArea():
 		self.lblScore.text = str(self.score)
 		self.lblScore.draw()
 
+
+	def endGame(self, dt):
+		print('Game over')
+		while self.syncKey:
+			pass
+		self.syncKey = True
 
 
 if __name__ == '__main__':
