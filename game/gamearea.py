@@ -18,7 +18,7 @@ class GameArea():
 		self.descriptiontext = description
 
 		self.score = pyglet.text.Label('0', font_size=20, font_name='Times New Roman', x = width - 50, y = self.heading.y)
-		self.scorebox = draw.rectangle(width - 70, self.score.y + 40, 60, 50)
+		self.scorebox = draw.rectangle(width - 70, self.score.y + 40, 60, 50, filled=False)
 
 
 		@self.window.event
@@ -27,7 +27,7 @@ class GameArea():
 			self.heading.draw()
 			self.description.draw()
 			self.score.draw()
-			self.scorebox.draw(pyglet.gl.GL_LINE_LOOP)
+			self.scorebox.draw() # not pyglet.graphics instance mind you
 
 
 	def show(self):
