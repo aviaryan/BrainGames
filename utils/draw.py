@@ -46,11 +46,6 @@ def rectangle(x, y, length, breadth, filled=False, color=[]):
 	# pyglet.gl.glClearColor(0, 0.3, 0.5, 0)
 	_setColor(color)
 
-	# glPushMatrix()
-	# glTranslatef(x, y, 0)
-	# shape.draw(pyglet.gl.GL_LINE_LOOP)
-	# glPopMatrix()
-
 	return Figure(shape, GL_QUADS if filled else GL_LINE_LOOP)
 
 

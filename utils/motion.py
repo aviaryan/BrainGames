@@ -6,12 +6,16 @@ def slide(obj, fx, fy, dx=0, dy=0):
 	Slides an object
 	'''
 
-	sigx = sig(obj.x - fx)
-	sigy = sig(obj.y - fy)
+	sigx = sig(fx - obj.x)
+	sigy = sig(fy - obj.y)
 
-	while sig(obj.x - fx) == sigx:
+	print (sigx, sigy)
+
+	while sig(fx - obj.x) == sigx and sig(fy - obj.y) == sigy:
 		pyglet.clock.tick()
 		obj.x = obj.x + sigx * dx
+		obj.y = obj.y + sigy * dy
+		print(obj.y)
 		obj.draw()
 
 

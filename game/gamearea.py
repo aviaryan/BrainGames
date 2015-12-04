@@ -1,6 +1,5 @@
 import pyglet
-from utils import draw
-
+from utils import draw, motion
 
 class GameArea():
 	'''
@@ -16,9 +15,9 @@ class GameArea():
 		self.positive = 10
 		self.negative = -20
 		self.syncKey = False
-		self.gameTime = 5
+		self.gameTime = 10
 
-		pyglet.clock.set_fps_limit(30)
+		pyglet.clock.set_fps_limit(10)
 
 		self.components = []
 		self.window = pyglet.window.Window(width, height)
@@ -33,6 +32,7 @@ class GameArea():
 		self.scorebox = draw.rectangle(width - 90, self.lblScore.y + 40, 60, 50, filled=False)
 
 		self.components = [self.heading, self.description, self.lblScore, self.scorebox]
+		self.components_temp = []
 
 
 		@self.window.event
@@ -40,6 +40,8 @@ class GameArea():
 			self.window.clear()
 			for obj in self.components:
 				obj.draw()
+			for i in self.components_temp:
+				i.draw()
 
 
 	def show(self):
@@ -64,9 +66,23 @@ class GameArea():
 		'''
 		Updates the score
 		'''
+		#self.updateScoreFlyer(str(by))
 		self.score += by
 		self.lblScore.text = str(self.score)
 		self.lblScore.draw()
+
+
+	# def updateScoreFlyer(self, content):
+	# 	'''
+	# 	Shows the score flyer animation
+	# 	'''
+	# 	for i in self.components_temp:
+	# 		i.delete()
+	# 	self.components_temp = []
+	# 	flyer = pyglet.text.Label(content, font_size=20, x = self.lblScore.x, y = self.lblScore.y - 200)
+	# 	self.components_temp += [flyer]
+	# 	flyer.draw()
+	# 	Thread( motion.slide(flyer, flyer.x, flyer.y + 200, 0, 20) ).start()
 
 
 	def endGame(self, dt):

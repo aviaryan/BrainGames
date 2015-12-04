@@ -14,12 +14,7 @@ class BoolGame(gamearea.GameArea):
 		self.gameStarted = False
 
 		super().__init__(title, width, height, **kwargs)
-
-		@self.window.event
-		def on_draw():
-			self.window.clear()
-			for obj in self.components:
-				obj.draw()
+		
 
 		@self.window.event
 		def on_key_press(symbol, modifiers):

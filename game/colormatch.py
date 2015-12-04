@@ -12,7 +12,7 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		super().__init__('Color Match', width, height, description='Check if previous color is same as current one.')
 
-		self.curshape = draw.circle(200, 300, 75, filled=True, color=self.colors[0])
+		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.components += [self.curshape]
 		self.previous = 0
@@ -31,13 +31,13 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.curshape.figure.delete()
 		# motion.wait(1000)
 		if cshape == 'square':
-			self.curshape = draw.square(200, 300, 150, filled=True, color=self.colors[col])
+			self.curshape = draw.square(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
 		elif cshape == 'hexagon':
-			self.curshape = draw.hexagon(200, 300, 75, filled=True, color=self.colors[col])
+			self.curshape = draw.hexagon(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
 		elif cshape == 'triangle':
-			self.curshape = draw.triangle(200, 300, 150, filled=True, color=self.colors[col])
+			self.curshape = draw.triangle(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
 		else:
-			self.curshape = draw.circle(200, 300, 75, filled=True, color=self.colors[col])
+			self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
 		self.components.pop()
 		self.curshape.draw()
 		self.components += [self.curshape]
