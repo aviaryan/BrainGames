@@ -19,11 +19,11 @@ def weightedRandomRange(pdf, ranges):
 	'''
 	get Weighted Random for a range
 	Example - 
-	pdf = [ (0,0.2) , (1,0.8) ]
+	pdf = [ 0.2 , 0.8 ]
 	ranges = [ (1,2) , (2,3) ]
 	Here number returned between 2 and 3 probability is 0.8
 	'''
-	r = weightedRandom(pdf)
+	r = weightedRandomIndex(pdf)
 	num = (ranges[r][1] - ranges[r][0]) * random.random()
 	return ranges[r][0] + num
 
@@ -52,8 +52,8 @@ def weightedRandomIndex(pdf):
 
 
 if __name__ == '__main__':
-	# j = [(0, 0.2), (1, 0.6), (2, 0.2)]
-	# for i in range(100):
-	# 	x = weightedRandomRange(j, [(-1,1) , (1,2) , (2,3)])
-	# 	print(x)
-	genStatement()
+	j = [0.2,0.6,0.2]
+	for i in range(100):
+		x = weightedRandomRange(j, [(-1,1) , (1,2) , (2,3)])
+		print(x)
+	# genStatement()

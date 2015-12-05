@@ -7,9 +7,8 @@ from game import mathgame
 # newgame.show()
 # newgame.start()
 
-newgame = colormatch.ColorMatchGame(700, 500)
-# newgame = mathgame.MathGame(500, 500)
+# newgame = colormatch.ColorMatchGame(700, 500)
+newgame = mathgame.MathGame(500, 500)
 
 
 newgame.start()
-
