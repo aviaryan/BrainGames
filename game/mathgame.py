@@ -1,21 +1,21 @@
 from game import boolgame
 import pyglet
-import random
 from utils import maths
 
 
 class MathGame(boolgame.BoolGame):
 
-	comparators = ['>', '==', '<']
+	comparators = ['==', '<']
 	operators = ['+', '-', '*', '/', '^']
 
 
 	def __init__(self, width, height):
 
+		self.negative = -10 # tryin to be fair
+
 		super().__init__('Math Game', width, height, description='Check if the expression is true or not')
 
-		self.lblExp = pyglet.text.Label('abc', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
-		self.components += [self.lblExp]
+		self.lblExp = pyglet.text.Label('4 < 2', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
 		self.lblExp.draw()
 		self.window.push_handlers(on_draw = self.pyglet_on_draw)
 
@@ -32,7 +32,6 @@ class MathGame(boolgame.BoolGame):
 
 		self.syncKey = True
 
-		# generate expression
 		exp = self.genExpression()
 		self.lblExp.text = exp[0]
 		self.lblExp.draw()
@@ -45,12 +44,12 @@ class MathGame(boolgame.BoolGame):
 		'''
 		Generates a random expression for this game
 		'''
-		chComparator = maths.weightedRandomIndex([0.38, 0.24, 0.38])
+		chComparator = maths.weightedRandomIndex([0.24, 0.76])
 		leftSize = maths.weightedRandomIndex([0.15, 0.75]) + 1
 		rightSize = maths.weightedRandomIndex([0.2, 0.8]) + 1
 
-		oprPDF = [0.33, 0.25, 0.27, 0.10, 0.05]
-		numRange = [(0,1) , (1,9) , (9,15) , (15,25)]
+		oprPDF = [0.35, 0.20, 0.30, 0.13, 0.02]
+		numRange = [(1,1) , (1,9) , (9,15) , (15,25)]
 		numPDF = [0.01, 0.69, 0.27, 0.03]
 
 		lhs = ''

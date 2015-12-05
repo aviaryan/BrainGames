@@ -14,7 +14,6 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
-		self.components += [self.curshape]
 		self.previous = 0
 		self.window.push_handlers(on_draw = self.pyglet_on_draw)
 

@@ -1,4 +1,3 @@
-from game import boolgame
 from game import colormatch
 from game import mathgame
 
@@ -8,7 +7,7 @@ from game import mathgame
 # newgame.start()
 
 # newgame = colormatch.ColorMatchGame(700, 500)
-newgame = mathgame.MathGame(500, 500)
+newgame = mathgame.MathGame(600, 500)
 
 
 newgame.start()

@@ -32,9 +32,6 @@ class GameArea():
 		self.lblScore = pyglet.text.Label(str(self.score), font_size=20, font_name='Lucida Console', x = width - 80, y = self.heading.y)
 		self.scorebox = draw.rectangle(width - 90, self.lblScore.y + 40, 60, 50, filled=False)
 
-		self.components = [self.heading, self.description, self.lblScore, self.scorebox]
-		self.components_temp = []
-
 		@self.window.event
 		def on_draw():
 			# self.window.clear()
