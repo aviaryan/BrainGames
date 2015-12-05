@@ -1,6 +1,7 @@
 from game import boolgame
 import pyglet
 import random
+from utils import maths
 
 
 class MathGame(boolgame.BoolGame):

@@ -16,6 +16,15 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.curshape.draw()
 		self.components += [self.curshape]
 		self.previous = 0
+		self.window.push_handlers(on_draw = self.pyglet_on_draw)
+
+
+	def pyglet_on_draw(self):
+		'''
+		Default on_draw event for the game
+		'''
+		self.window.clear()
+		self.curshape.draw()
 
 
 	def addNew(self):

@@ -1,5 +1,6 @@
 import pyglet
 from utils import draw, motion
+from sys import exit
 
 class GameArea():
 	'''
@@ -34,14 +35,17 @@ class GameArea():
 		self.components = [self.heading, self.description, self.lblScore, self.scorebox]
 		self.components_temp = []
 
-
 		@self.window.event
 		def on_draw():
-			self.window.clear()
-			for obj in self.components:
-				obj.draw()
-			for i in self.components_temp:
-				i.draw()
+			# self.window.clear()
+			self.heading.draw()
+			self.description.draw()
+			self.lblScore.draw()
+			self.scorebox.draw()
+
+		@self.window.event
+		def on_close():
+			exit(0)
 
 
 	def show(self):
