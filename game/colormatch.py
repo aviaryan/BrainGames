@@ -15,10 +15,10 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.previous = 0
-		self.window.push_handlers(on_draw = self.pyglet_on_draw)
+		# self.window.push_handlers(on_draw = self.on_draw)
 
 
-	def pyglet_on_draw(self):
+	def game_on_draw(self):
 		'''
 		Default on_draw event for the game
 		'''
@@ -46,9 +46,9 @@ class ColorMatchGame(boolgame.BoolGame):
 			self.curshape = draw.triangle(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
 		else:
 			self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
-		self.components.pop()
+		#self.components.pop()
 		self.curshape.draw()
-		self.components += [self.curshape]
+		#self.components += [self.curshape]
 
 		self.syncKey = False
 		return

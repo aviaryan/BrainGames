@@ -14,6 +14,8 @@ class BoolGame(gamearea.GameArea):
 		self.gameStarted = False
 
 		super().__init__(title, width, height, **kwargs)
+
+		self.window.push_handlers(on_draw = self.game_on_draw)
 		
 
 		@self.window.event
@@ -32,6 +34,10 @@ class BoolGame(gamearea.GameArea):
 				self.submit(True)
 
 
+	def game_on_draw(self):
+		pass
+
+
 	def submit(self, ans):
 		'''
 		Checks the user's answer and then updates the game
@@ -47,8 +53,4 @@ class BoolGame(gamearea.GameArea):
 
 
 	def addNew(self):
-		return
-
-	def start(self):
-		self.show()
-		return
+		pass

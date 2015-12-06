@@ -6,7 +6,7 @@ from utils import maths
 class MathGame(boolgame.BoolGame):
 
 	comparators = ['==', '<']
-	operators = ['+', '-', '*', '/', '^']
+	operators = ['+', '-', '*', '/']
 
 
 	def __init__(self, width, height):
@@ -15,12 +15,12 @@ class MathGame(boolgame.BoolGame):
 
 		super().__init__('Math Game', width, height, description='Check if the expression is true or not')
 
-		self.lblExp = pyglet.text.Label('4 < 2', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
+		self.lblExp = pyglet.text.Label('2 < 4', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
 		self.lblExp.draw()
-		self.window.push_handlers(on_draw = self.pyglet_on_draw)
+		# self.window.push_handlers(on_draw = self.pyglet_on_draw)
 
 
-	def pyglet_on_draw(self):
+	def game_on_draw(self):
 		'''
 		Default on_draw event for the game
 		'''
@@ -48,7 +48,7 @@ class MathGame(boolgame.BoolGame):
 		leftSize = maths.weightedRandomIndex([0.15, 0.75]) + 1
 		rightSize = maths.weightedRandomIndex([0.2, 0.8]) + 1
 
-		oprPDF = [0.35, 0.20, 0.30, 0.13, 0.02]
+		oprPDF = [0.35, 0.20, 0.30, 0.15]
 		numRange = [(1,1) , (1,9) , (9,15) , (15,25)]
 		numPDF = [0.01, 0.69, 0.27, 0.03]
 

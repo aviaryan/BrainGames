@@ -45,6 +45,13 @@ class GameArea():
 			exit(0)
 
 
+	def start(self):
+		'''
+		Run the game
+		'''
+		self.show()
+
+
 	def show(self):
 		'''
 		Make the game window visible
