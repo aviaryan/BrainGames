@@ -83,3 +83,13 @@ def triangle(x, y, length, filled=False, color=[]):
 	shape = pyglet.graphics.vertex_list(3, ('v2i', verts))
 	_setColor(color)
 	return Figure(shape, GL_TRIANGLES)
+
+
+def color2Array(rgb):
+	'''
+	Converts color to array
+	'''
+	r = int(rgb[0:2], 16)
+	g = int(rgb[2:4], 16)
+	b = int(rgb[4:], 16)
+	return [r, g, b]

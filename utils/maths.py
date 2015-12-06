@@ -1,18 +1,19 @@
 from math import *
 import random
+from functools import reduce
 
 
-def genStatement():
+def factors(n):
 	'''
-	Returns a boolean maths statement
-	'''
-	operators = ['+', '-', '*', '/', '^']
-	operators_pdf = [0.33, 0.20, 0.27, 0.15, 0.05]
-	print( operators[weightedRandomIndex(operators_pdf)] )
-	numL = -10
-	numH = 100
-	LHSize = random.randint(1, 3)
+	get factors of a number
+	http://stackoverflow.com/a/6800214/2295672
+	'''  
+	return list( set(reduce(list.__add__,
+				([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0))) )
 
+
+def randint(a,b):
+	return random.randint(a,b)
 
 
 def weightedRandomRange(pdf, ranges):
@@ -56,4 +57,4 @@ if __name__ == '__main__':
 	for i in range(100):
 		x = weightedRandomRange(j, [(-1,1) , (1,2) , (2,3)])
 		print(x)
-	# genStatement()
+	print(factors(27))

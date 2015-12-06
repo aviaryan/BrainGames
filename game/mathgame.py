@@ -5,7 +5,7 @@ from utils import maths
 
 class MathGame(boolgame.BoolGame):
 
-	comparators = ['==', '<']
+	comparators = ['==', '<', '>']
 	operators = ['+', '-', '*', '/']
 
 
@@ -17,7 +17,6 @@ class MathGame(boolgame.BoolGame):
 
 		self.lblExp = pyglet.text.Label('2 < 4', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
 		self.lblExp.draw()
-		# self.window.push_handlers(on_draw = self.pyglet_on_draw)
 
 
 	def game_on_draw(self):
@@ -32,7 +31,7 @@ class MathGame(boolgame.BoolGame):
 
 		self.syncKey = True
 
-		exp = self.genExpression()
+		exp = self.genInequality()
 		self.lblExp.text = exp[0]
 		self.lblExp.draw()
 		self.answer = exp[1]
@@ -40,34 +39,45 @@ class MathGame(boolgame.BoolGame):
 		self.syncKey = False
 
 
-	def genExpression(self):
+	def genInequality(self):
 		'''
-		Generates a random expression for this game
+		Generates a random inequality for this game
 		'''
-		chComparator = maths.weightedRandomIndex([0.24, 0.76])
+		chComparator = maths.weightedRandomIndex([0.24, 0.38, 0.38])
 		leftSize = maths.weightedRandomIndex([0.15, 0.75]) + 1
 		rightSize = maths.weightedRandomIndex([0.2, 0.8]) + 1
 
+		lhs = self.getExpression(leftSize)
+		rhs = self.getExpression(rightSize)
+
+		ans = eval( '(' + lhs + ')' + 
+					self.comparators[chComparator] +
+					'(' + rhs + ')' 
+				)
+
+		return (lhs + '  ' + self.comparators[chComparator].replace('==', '=') + '  ' + rhs , ans)
+
+
+	def getExpression(self, size):
+		'''
+		generates an expression
+		'''
 		oprPDF = [0.35, 0.20, 0.30, 0.15]
 		numRange = [(1,1) , (1,9) , (9,15) , (15,25)]
 		numPDF = [0.01, 0.69, 0.27, 0.03]
 
-		lhs = ''
-		for i in range(leftSize):
-			lhs += ' ' + str( round(maths.weightedRandomRange(numPDF, numRange)) ) + ' '
-			lhs += self.operators[ maths.weightedRandomIndex(oprPDF) ]
-		rhs = ''
-		for i in range(rightSize):
-			rhs += ' ' + str( round(maths.weightedRandomRange(numPDF, numRange)) ) + ' '
-			rhs += self.operators[ maths.weightedRandomIndex(oprPDF) ]
+		n1 = round(maths.weightedRandomRange(numPDF, numRange))
+		if size == 1:
+			return str(n1)
+		if size > 2:
+			print('Not implemented')
+		# size = 2
+		opr = self.operators[ maths.weightedRandomIndex(oprPDF) ]
+		if opr == '/':
+			factors = maths.factors(n1)
+			choice = maths.randint(0, len(factors)-1)
+			n2 = factors[choice]
+		else:
+			n2 = round(maths.weightedRandomRange(numPDF, numRange))
 
-		lhs = lhs[:-1].strip()
-		rhs = rhs[:-1].strip()
-
-		ans = eval( '(' + lhs.replace('^','**') + ')' + 
-					self.comparators[chComparator] +
-					'(' + rhs.replace('^', '**') + ')' 
-				)
-
-		return (lhs + '  ' + self.comparators[chComparator] + '  ' + rhs , ans)
-
+		return str(n1) + ' ' + opr + ' ' + str(n2)
