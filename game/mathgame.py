@@ -47,8 +47,8 @@ class MathGame(boolgame.BoolGame):
 		leftSize = maths.weightedRandomIndex([0.15, 0.75]) + 1
 		rightSize = maths.weightedRandomIndex([0.2, 0.8]) + 1
 
-		lhs = self.getExpression(leftSize)
-		rhs = self.getExpression(rightSize)
+		lhs = self.genExpression(leftSize)
+		rhs = self.genExpression(rightSize)
 
 		ans = eval( '(' + lhs + ')' + 
 					self.comparators[chComparator] +
@@ -58,7 +58,7 @@ class MathGame(boolgame.BoolGame):
 		return (lhs + '  ' + self.comparators[chComparator].replace('==', '=') + '  ' + rhs , ans)
 
 
-	def getExpression(self, size):
+	def genExpression(self, size):
 		'''
 		generates an expression
 		'''
@@ -74,9 +74,9 @@ class MathGame(boolgame.BoolGame):
 		# size = 2
 		opr = self.operators[ maths.weightedRandomIndex(oprPDF) ]
 		if opr == '/':
-			factors = maths.factors(n1)
-			choice = maths.randint(0, len(factors)-1)
-			n2 = factors[choice]
+			n2 = maths.getNiceDivisor(n1)
+		elif opr == '-':
+			n2 = maths.getPositiveMinus(n1)
 		else:
 			n2 = round(maths.weightedRandomRange(numPDF, numRange))
 

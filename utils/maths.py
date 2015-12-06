@@ -16,6 +16,21 @@ def randint(a,b):
 	return random.randint(a,b)
 
 
+def getNiceDivisor(n):
+	'''
+	get a divisor for n which completely divides it
+	'''
+	x = factors(n)
+	choice = randint(0, len(x)-1)
+	n2 = x[choice]
+	return n2
+
+
+def getPositiveMinus(n):
+	x = randint(1, n-1)
+	return x
+
+
 def weightedRandomRange(pdf, ranges):
 	'''
 	get Weighted Random for a range
