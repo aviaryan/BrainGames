@@ -31,6 +31,11 @@ def getPositiveMinus(n):
 	return x
 
 
+def getDoableMultiply(n, limit=100):
+	x = floor(limit/n)
+	return randint(1,x)
+
+
 def weightedRandomRange(pdf, ranges):
 	'''
 	get Weighted Random for a range

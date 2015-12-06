@@ -77,6 +77,8 @@ class MathGame(boolgame.BoolGame):
 			n2 = maths.getNiceDivisor(n1)
 		elif opr == '-':
 			n2 = maths.getPositiveMinus(n1)
+		elif opr == '*':
+			n2 = maths.getDoableMultiply(n1, 300)
 		else:
 			n2 = round(maths.weightedRandomRange(numPDF, numRange))
 

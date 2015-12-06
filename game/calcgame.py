@@ -43,8 +43,11 @@ class CalcGame(subjectivegame.SubjectiveGame):
 		self.syncKey = False
 
 
-	def genExpression(self):
-
+	def genExpression(self, size):
+		'''
+		Generate the expression
+		'''
 		oprPDF = [0.35, 0.20, 0.30, 0.15]
 		numRange = [(1,1) , (1,9) , (9,15) , (15,25)]
 		numPDF = [0.01, 0.69, 0.27, 0.03]
+
