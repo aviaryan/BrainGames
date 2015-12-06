@@ -9,7 +9,7 @@ from game import subjectivegame
 
 newgame = colormatch.ColorMatchGame(700, 500)
 # newgame = mathgame.MathGame(600, 500)
-#newgame = subjectivegame.SubjectiveGame('My game', 700, 500, description='test')
+# newgame = subjectivegame.SubjectiveGame('My game', 700, 500, description='test')
 
 
 newgame.start()

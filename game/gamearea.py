@@ -24,13 +24,12 @@ class GameArea():
 		self.window = pyglet.window.Window(width, height)
 		self.width = width
 		self.height = height
-		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 50, anchor_x = 'center')
+		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
 
-		self.description = pyglet.text.Label(description, x = 30, y = height - 90)
+		self.description = pyglet.text.Label(description, font_size=12, x = 30, y = self.heading.y - 50)
 		self.descriptiontext = description
 
-		self.lblScore = pyglet.text.Label(str(self.score), font_size=20, font_name='Lucida Console', x = width - 80, y = self.heading.y)
-		self.scorebox = draw.rectangle(width - 90, self.lblScore.y + 40, 60, 50, filled=False)
+		self.lblScore = pyglet.text.HTMLLabel(self.lblScoreHTML(), x = width - 80, y = self.heading.y)
 
 		@self.window.event
 		def on_draw():
@@ -38,7 +37,6 @@ class GameArea():
 			self.heading.draw()
 			self.description.draw()
 			self.lblScore.draw()
-			self.scorebox.draw()
 
 		@self.window.event
 		def on_close():
@@ -76,8 +74,15 @@ class GameArea():
 		'''
 		#self.updateScoreFlyer(str(by))
 		self.score += by
-		self.lblScore.text = str(self.score)
+		self.lblScore.text = self.lblScoreHTML()
 		self.lblScore.draw()
+
+
+	def lblScoreHTML(self):
+		'''
+		returns the HTML code for score label display
+		'''
+		return '<b><font size=+3 color=gray>' + str(self.score) + '</font></b>'
 
 
 	# def updateScoreFlyer(self, content):
