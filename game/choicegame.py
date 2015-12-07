@@ -35,6 +35,8 @@ class ChoiceGame(GameArea):
 
 
 	def on_mouse_release(self, x, y, button, modifiers):
+		if self.syncKey:
+			return
 		if button != pyglet.window.mouse.LEFT:
 			return
 		for i in self.choices:
@@ -52,7 +54,11 @@ class ChoiceGame(GameArea):
 			self.updateScore(self.positive)
 		else:
 			self.updateScore(self.negative)
+		self.addNew()
 
+
+	def addNew(self):
+		pass
 
 
 	def on_draw(self):
