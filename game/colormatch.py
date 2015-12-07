@@ -46,9 +46,7 @@ class ColorMatchGame(boolgame.BoolGame):
 			self.curshape = draw.triangle(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
 		else:
 			self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
-		#self.components.pop()
 		self.curshape.draw()
-		#self.components += [self.curshape]
 
 		self.syncKey = False
 		return

@@ -13,6 +13,7 @@ class ChoiceGame(GameArea):
 		self.negative = -10
 
 		self.lblQuestion = pyglet.text.Label('This is a question', x = self.width//2, anchor_x='center', y = self.description.y - 50, font_size = 18)
+		self.choices = []
 
 		self.window.push_handlers(on_draw = self.template_on_draw)
 		self.window.push_handlers(on_draw = self.on_draw, on_mouse_release = self.on_mouse_release)
@@ -61,7 +62,8 @@ class Choice():
 	'''
 	w = 200
 	h = 50
-	def_color = [250, 250, 0]
+	_color = [250, 250, 0]
+	_textcolor = [0,0,0,255]
 
 	def __init__(self, text, value, x, y, color=[], textcolor=[]):
 		self.text = text
@@ -69,13 +71,13 @@ class Choice():
 		self.x = x
 		self.y = y
 		if len(color) == 0:
-			self.color = self.def_color
+			self.color = self._color
 		else:
 			self.color = color
 		if len(textcolor) == 0:
-			textcolor = [0,0,0,255]
+			textcolor = self._textcolor
 
-		self.label = pyglet.text.Label(text, x = x + self.w//2, anchor_x = 'center', y = y - 10, anchor_y = 'top', font_size = 14, color=[0,0,0,255] )
+		self.label = pyglet.text.Label(text, x = x + self.w//2, anchor_x = 'center', y = y - self.h//2, anchor_y = 'center', font_size = 14, color=textcolor )
 
 
 	def draw(self):

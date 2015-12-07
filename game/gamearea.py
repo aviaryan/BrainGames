@@ -2,6 +2,7 @@ import pyglet
 from utils import draw, motion
 from sys import exit
 
+
 class GameArea():
 	'''
 	GameArea class.. create a new game
