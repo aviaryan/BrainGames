@@ -57,7 +57,3 @@ class SubjectiveGame(gamearea.GameArea):
 		self.addNew()
 		self.lblAnswer.text = ''
 		self.cText = ''
-
-
-	def beginPlay(self):
-		pyglet.clock.schedule_once(self.endGame, self.gameTime)

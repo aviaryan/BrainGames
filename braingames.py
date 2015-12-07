@@ -9,8 +9,8 @@ from game import calcgame
 # newgame.start()
 
 # newgame = colormatch.ColorMatchGame(700, 500)
-newgame = mathgame.MathGame(600, 500)
+# newgame = mathgame.MathGame(600, 500)
 # newgame = subjectivegame.SubjectiveGame('My game', 700, 500, description='test')
-# newgame = calcgame.CalcGame(600, 500)
+newgame = calcgame.CalcGame(600, 500)
 
 newgame.start()
