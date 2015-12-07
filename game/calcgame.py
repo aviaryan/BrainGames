@@ -42,6 +42,7 @@ class CalcGame(SubjectiveGame):
 		self.lblExp.text = exp[0]
 		self.lblExp.draw()
 		self.answer = str(exp[1])
+		print(exp[0])
 
 		self.syncKey = False
 

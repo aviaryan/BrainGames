@@ -32,30 +32,33 @@ class Scrabble(ChoiceGame):
 		wlen = maths.weightedRandomIndex(pdf) + 5
 		pos = randint(0, len(self.data[wlen])-1)
 		word = self.data[wlen][pos]
-		scrabbled = scrabbleWord(word).upper()
+		scrabbled = scrabbleWord(word)
+		while word == scrabbled:
+			scrabbled = scrabbleWord(word)
 		self.answer = randint(0,3)
-		posans = pos
+		poss = [pos]
+		leftPoint = 0 if (pos-5 < 0) else pos-5
+		rightPoint = len(self.data[wlen]) - 1 if (pos + 5 > len(self.data[wlen]) - 1) else pos + 5
 
 		for i in range(4):
 			if i == self.answer:
 				self.choices[i].label.text = word.upper()
 			else:
-				pos = posans
-				while pos == posans:
-					pos = randint(0, len(self.data[wlen])-1)
+				pos = poss[0]
+				while pos in poss:
+					pos = randint(leftPoint, rightPoint)
 				self.choices[i].label.text = self.data[wlen][pos].upper()
+				poss += [pos]
 
 
-		self.lblQuestion.text = scrabbled
+		self.lblQuestion.text = scrabbled.upper()
 		self.syncKey = False
 
 
 	def on_draw(self):
 		self.window.clear()
-		self.choice1.draw()
-		self.choice2.draw()
-		self.choice3.draw()
-		self.choice4.draw()
+		for _ in self.choices:
+			_.draw()
 
 
 
@@ -73,12 +76,13 @@ def loadWordlist():
 	'''
 	loads the wordlist into an array
 	'''
-	# https://github.com/ManiacDC/TypingAid
+	# Wordlist_3600 https://github.com/ManiacDC/TypingAid
+	# corncob_caps http://www.mieliestronk.com/wordlist.html
 
 	data = dict()
 	for i in range(5,10+1):
 		data[i] = []
-	path = 'resources/Wordlist_3600.txt'
+	path = 'resources/corncob_caps.txt'
 	with open(path) as f:
 		for line in f:
 			if not line[:-1].isalpha():

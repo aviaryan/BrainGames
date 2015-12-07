@@ -19,7 +19,7 @@ class GameArea():
 		self.gameTime = 10
 		self.timeLeft = 0
 
-		pyglet.clock.set_fps_limit(10)
+		pyglet.clock.set_fps_limit(20)
 
 		self.components = []
 		self.window = pyglet.window.Window(width, height, caption = title)
@@ -32,6 +32,9 @@ class GameArea():
 
 		self.lblTimeLeft = pyglet.text.Label(str(self.gameTime), font_size=18, x = 40, y = self.heading.y)
 		self.lblScore = pyglet.text.HTMLLabel(self.lblScoreHTML(), x = width - 80, y = self.heading.y)
+
+		self.soundCorrect = pyglet.media.load('resources/correct.wav', streaming=False)
+		self.soundFail = pyglet.media.load('resources/fail.wav', streaming=False)
 
 		if color:
 			self.setBackgroundColor( color )
@@ -79,6 +82,10 @@ class GameArea():
 		Updates the score
 		'''
 		#self.updateScoreFlyer(str(by))
+		if by == self.positive:
+			self.soundCorrect.play()
+		elif by == self.negative:
+			self.soundFail.play()
 		self.score += by
 		self.lblScore.text = self.lblScoreHTML()
 
