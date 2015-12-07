@@ -11,11 +11,11 @@ class MathGame(boolgame.BoolGame):
 
 	def __init__(self, width, height):
 
-		super().__init__('Math Game', width, height, description='Check if the expression is true or not', color = '#004000')
+		super().__init__('Math Game', width, height, color = '#004000')
 
 		self.negative = -10 # tryin to be fair
-		self.lblExp = pyglet.text.Label('2 < 4', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
-		self.lblExp.draw()
+		self.lblExp = pyglet.text.Label('..', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
+		self.window.dispatch_event('on_key_press', 21, '') # start the game, no need for description
 
 
 	def game_on_draw(self):
