@@ -11,10 +11,9 @@ class MathGame(boolgame.BoolGame):
 
 	def __init__(self, width, height):
 
-		self.negative = -10 # tryin to be fair
-
 		super().__init__('Math Game', width, height, description='Check if the expression is true or not')
 
+		self.negative = -10 # tryin to be fair
 		self.lblExp = pyglet.text.Label('2 < 4', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
 		self.lblExp.draw()
 
@@ -73,13 +72,6 @@ class MathGame(boolgame.BoolGame):
 			print('Not implemented')
 		# size = 2
 		opr = self.operators[ maths.weightedRandomIndex(oprPDF) ]
-		if opr == '/':
-			n2 = maths.getNiceDivisor(n1)
-		elif opr == '-':
-			n2 = maths.getPositiveMinus(n1)
-		elif opr == '*':
-			n2 = maths.getDoableMultiply(n1, 300)
-		else:
-			n2 = round(maths.weightedRandomRange(numPDF, numRange))
+		n2 = maths.getSecondOperand(n1, opr, multiplyLimit = 300, numPDF = numPDF, numRange = numRange)
 
 		return str(n1) + ' ' + opr + ' ' + str(n2)

@@ -3,6 +3,22 @@ import random
 from functools import reduce
 
 
+
+def getSecondOperand(n1, opr, multiplyLimit = 100, numPDF=[1.0], numRange=[(1,9)] ):
+	'''
+	gets second operand given the first operand and operator
+	'''
+	if opr == '/':
+		n2 = getNiceDivisor(n1)
+	elif opr == '-':
+		n2 = getPositiveMinus(n1)
+	elif opr == '*':
+		n2 = getDoableMultiply(n1, multiplyLimit)
+	else:
+		n2 = round(weightedRandomRange(numPDF, numRange))
+	return n2
+
+
 def factors(n):
 	'''
 	get factors of a number
