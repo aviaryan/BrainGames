@@ -89,6 +89,8 @@ def color2Array(rgb):
 	'''
 	Converts color to array
 	'''
+	if rgb[0:1] == '#':
+		rgb = rgb[1:]
 	r = int(rgb[0:2], 16)
 	g = int(rgb[2:4], 16)
 	b = int(rgb[4:], 16)

@@ -7,7 +7,7 @@ class GameArea():
 	GameArea class.. create a new game
 	'''
 
-	def __init__(self, title, width, height, description=''):
+	def __init__(self, title, width, height, description='', color=''):
 		'''
 		Init Game Area class
 		'''
@@ -21,7 +21,7 @@ class GameArea():
 		pyglet.clock.set_fps_limit(10)
 
 		self.components = []
-		self.window = pyglet.window.Window(width, height)
+		self.window = pyglet.window.Window(width, height, caption = title)
 		self.width = width
 		self.height = height
 		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
@@ -29,7 +29,11 @@ class GameArea():
 		self.description = pyglet.text.Label(description, font_size=12, x = 30, y = self.heading.y - 50)
 		self.descriptiontext = description
 
+		self.lblTimeLeft = pyglet.text.Label('10', font_size=18, x = 40, y = self.heading.y)
 		self.lblScore = pyglet.text.HTMLLabel(self.lblScoreHTML(), x = width - 80, y = self.heading.y)
+
+		if color:
+			self.setBackgroundColor( color )
 
 		@self.window.event
 		def on_draw():
@@ -37,6 +41,7 @@ class GameArea():
 			self.heading.draw()
 			self.description.draw()
 			self.lblScore.draw()
+			self.lblTimeLeft.draw()
 
 		@self.window.event
 		def on_close():
@@ -78,6 +83,14 @@ class GameArea():
 		self.lblScore.draw()
 
 
+	def setBackgroundColor(self, color):
+		if str(type(color)).find('str'):
+			color = draw.color2Array(color)
+		if len(color) == 3:
+			color += [255]
+		pyglet.gl.glClearColor( color[0] / 255.0 , color[1] / 255.0 , color[2] / 255.0 , color[3] / 255.0 )
+
+
 	def lblScoreHTML(self):
 		'''
 		returns the HTML code for score label display
@@ -103,7 +116,6 @@ class GameArea():
 		while self.syncKey:
 			pass
 		self.syncKey = True
-
 
 if __name__ == '__main__':
 	newgame = GameArea('My Game', 500, 500)
