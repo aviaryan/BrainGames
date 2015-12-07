@@ -11,6 +11,15 @@ class Scrabble(ChoiceGame):
 
 		super().__init__('Word Scrabble', width, height, color = '#004040')
 
+		self.gameTime = 30
+
+		choice_y = self.lblQuestion.y - 30
+		self.choice1 = Choice('Choice 1', 0, self.width//2 - 100, choice_y )
+		self.choice2 = Choice('Choice 2', 1, self.width//2 - 100, choice_y - 60 )
+		self.choice3 = Choice('Choice 3', 2, self.width//2 - 100, choice_y - 120 )
+		self.choice4 = Choice('Choice 4', 3, self.width//2 - 100, choice_y - 180 )
+		self.choices = [self.choice1, self.choice2, self.choice3, self.choice4]
+
 		self.addNew()
 		self.beginPlay()
 
@@ -19,19 +28,34 @@ class Scrabble(ChoiceGame):
 
 		self.syncKey = True
 		#     [5, 6, 7, 8, 9, 10]
-		pdf = [0.2, 0.3, 0.2, 0.1, 0.1, 0.1]
+		pdf = [0.3, 0.4, 0.15, 0.05, 0.05, 0.05]
 		wlen = maths.weightedRandomIndex(pdf) + 5
 		pos = randint(0, len(self.data[wlen])-1)
 		word = self.data[wlen][pos]
 		scrabbled = scrabbleWord(word).upper()
-		self.answer = randint(1,4)
-		self.lblQuestion.text = scrabbled
+		self.answer = randint(0,3)
+		posans = pos
 
+		for i in range(4):
+			if i == self.answer:
+				self.choices[i].label.text = word.upper()
+			else:
+				pos = posans
+				while pos == posans:
+					pos = randint(0, len(self.data[wlen])-1)
+				self.choices[i].label.text = self.data[wlen][pos].upper()
+
+
+		self.lblQuestion.text = scrabbled
 		self.syncKey = False
 
 
 	def on_draw(self):
 		self.window.clear()
+		self.choice1.draw()
+		self.choice2.draw()
+		self.choice3.draw()
+		self.choice4.draw()
 
 
 
@@ -50,11 +74,11 @@ def loadWordlist():
 	loads the wordlist into an array
 	'''
 	# https://github.com/ManiacDC/TypingAid
-	
+
 	data = dict()
 	for i in range(5,10+1):
 		data[i] = []
-	path = 'resources/WordList.txt'
+	path = 'resources/Wordlist_3600.txt'
 	with open(path) as f:
 		for line in f:
 			if not line[:-1].isalpha():
