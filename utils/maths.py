@@ -43,6 +43,8 @@ def getNiceDivisor(n):
 
 
 def getPositiveMinus(n):
+	if n==1:
+		return 1
 	x = randint(1, n-1)
 	return x
 

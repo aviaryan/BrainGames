@@ -9,10 +9,10 @@ class SubjectiveGame(gamearea.GameArea):
 
 	def __init__(self, title, width, height, **kwargs):
 
-		self.gameStarted = False
-		self.cText = ''
-
 		super().__init__(title, width, height, **kwargs)
+
+		self.cText = ''
+		self.negative = 0
 
 		self.answerBox = draw.rectangle(self.width//2 - 100, self.description.y - 200, 200, 50, filled=True, color = draw.color2Array('95a799'))
 		self.lblAnswer = pyglet.text.Label('', x = self.width//2, anchor_x = 'center', y = self.description.y - 200, anchor_y = 'top', font_size = 20)
@@ -52,8 +52,10 @@ class SubjectiveGame(gamearea.GameArea):
 		'''
 		if self.cText == self.answer:
 			self.updateScore(self.positive)
+			print('correct answer')
 		else:
 			self.updateScore(self.negative)
+			print('wrong answer', self.cText, self.answer)
 		self.addNew()
 		self.lblAnswer.text = ''
 		self.cText = ''

@@ -12,7 +12,7 @@ class CalcGame(SubjectiveGame):
 
 		super().__init__('Calculate Game', width, height, color = '#400000')
 
-		self.negative = -5
+		self.gameTime = 45
 		self.lblExp = pyglet.text.Label('2 + 4', x = self.width//2, anchor_x='center', y = self.description.y - 100, font_size = 20)
 		self.addNew()
 		self.beginPlay()
