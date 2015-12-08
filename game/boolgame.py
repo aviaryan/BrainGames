@@ -23,7 +23,6 @@ class BoolGame(gamearea.GameArea):
 			if not self.gameStarted:
 				self.descStatus(False)
 				self.gameStarted = True
-				# clock.schedule_once(self.endGame, self.gameTime)
 				self.beginPlay()
 				self.addNew()
 				return

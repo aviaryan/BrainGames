@@ -9,11 +9,11 @@ from game import colormeaning
 # newgame.show()
 # newgame.start()
 
-# newgame = colormatch.ColorMatchGame(700, 500)
+newgame = colormatch.ColorMatchGame(700, 500)
 # newgame = mathgame.MathGame(600, 500)
 # newgame = subjectivegame.SubjectiveGame('My game', 700, 500, description='test')
 # newgame = calcgame.CalcGame(600, 500)
 # newgame = scrabble.Scrabble(700, 500)
-newgame = colormeaning.ColorMeaningGame(700, 500)
+# newgame = colormeaning.ColorMeaningGame(700, 500)
 
 newgame.start()

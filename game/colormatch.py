@@ -1,6 +1,5 @@
 from game import boolgame
-from utils import draw, motion
-import random
+from utils import draw, maths
 
 
 class ColorMatchGame(boolgame.BoolGame):
@@ -15,7 +14,7 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.previous = 0
-		# self.window.push_handlers(on_draw = self.on_draw)
+		self.previous_shape = 0
 
 
 	def game_on_draw(self):
@@ -30,14 +29,25 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		self.syncKey = True
 
-		col = random.randint(0, len(self.colors)-1)
-		shape = random.randint(0, len(self.shapes)-1)
-		cshape = self.shapes[shape]
-		self.answer = True if (col == self.previous) else False
-		self.previous = col
+		self.answer = maths.weightedRandomIndex([0.65, 0.35]) # 0.65 for 0 i.e wrong answer
 
+		if self.answer == 1:
+			col = self.previous
+			shape = self.previous_shape
+			while shape == self.previous_shape:
+				shape = maths.randint(0, 3)
+		else:
+			col = self.previous
+			while col == self.previous:
+				col = maths.randint(0, 3)
+			shape = maths.randint(0, 3)
+
+		cshape = self.shapes[shape]
+
+		self.previous = col
+		self.previous_shape = shape
 		self.curshape.figure.delete()
-		# motion.wait(1000)
+
 		if cshape == 'square':
 			self.curshape = draw.square(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
 		elif cshape == 'hexagon':
@@ -49,4 +59,3 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.curshape.draw()
 
 		self.syncKey = False
-		return
