@@ -3,6 +3,37 @@ from pyglet.gl import *
 from math import *
 
 
+class RectangularButton():
+	'''
+	A generic rectangular button
+	'''
+
+	def __init__(self, text, value, x, y, w=200, h=50, color=[255, 255, 0], textcolor=[0,0,0,255], textsize = 14):
+		self.text = text
+		self.value = value
+		self.x = x
+		self.y = y
+		self.w = w
+		self.h = h
+		self.color = color
+		self.textcolor = textcolor
+		self.textsize = textsize
+		if len(self.textcolor) == 3:
+			self.textcolor += [255]
+		
+		self.label = pyglet.text.Label(text, x = x + self.w//2, anchor_x = 'center', y = y - self.h//2, anchor_y = 'center', font_size = self.textsize, color=self.textcolor )
+
+
+	def draw(self):
+		'''
+		Draw the button
+		'''
+		self.figure = rectangle(self.x, self.y, self.w, self.h, filled=True, color=self.color)
+		self.figure.draw()
+		self.label.draw()
+
+
+
 class Figure():
 	'''
 	figure class

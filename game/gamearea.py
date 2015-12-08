@@ -3,6 +3,7 @@ from utils import draw, motion
 from sys import exit
 
 
+
 class GameArea():
 	'''
 	GameArea class.. create a new game
@@ -138,6 +139,8 @@ class GameArea():
 		while self.syncKey:
 			pass
 		self.syncKey = True
+
+
 
 if __name__ == '__main__':
 	newgame = GameArea('My Game', 500, 500)

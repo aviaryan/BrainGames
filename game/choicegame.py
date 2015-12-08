@@ -1,6 +1,6 @@
 from game.gamearea import GameArea
 import pyglet
-from utils import draw
+from utils.draw import RectangularButton
 
 
 class ChoiceGame(GameArea):
@@ -56,31 +56,14 @@ class ChoiceGame(GameArea):
 
 
 
-class Choice():
+class Choice(RectangularButton):
 	'''
 	Class to represent an option in the choice-type game
 	'''
-	w = 200
-	h = 50
+	_w = 200
+	_h = 50
 	_color = [250, 250, 0]
 	_textcolor = [0,0,0,255]
 
-	def __init__(self, text, value, x, y, color=[], textcolor=[]):
-		self.text = text
-		self.value = value
-		self.x = x
-		self.y = y
-		if len(color) == 0:
-			self.color = self._color
-		else:
-			self.color = color
-		if len(textcolor) == 0:
-			textcolor = self._textcolor
-
-		self.label = pyglet.text.Label(text, x = x + self.w//2, anchor_x = 'center', y = y - self.h//2, anchor_y = 'center', font_size = 14, color=textcolor )
-
-
-	def draw(self):
-		self.figure = draw.rectangle(self.x, self.y, self.w, self.h, filled=True, color=self.color)
-		self.figure.draw()
-		self.label.draw()
+	def __init__(self, text, value, x, y):
+		super().__init__(text, value, x, y, w = self._w, h = self._h, color = self._color, textcolor = self._textcolor)
