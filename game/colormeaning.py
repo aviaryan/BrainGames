@@ -8,7 +8,7 @@ class ColorMeaningGame(boolgame.BoolGame, Colors):
 
 	def __init__(self, width, height):
 
-		self.colors = [ [255,0,0] , [255,255,255] , [0,255,0] , [255,255,0] ]
+		self.colors = [self.red[:], self.white[:], self.green[:], self.yellow[:]]
 		self.colornames = ['red', 'white', 'green', 'yellow']
 
 		boolgame.BoolGame.__init__(self, 'Color Meaning', width, height, description='Check if meaning of text on left is same as color of text on right', color = '#0B3526')
