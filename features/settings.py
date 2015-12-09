@@ -34,7 +34,6 @@ def saveScore(gameid, score):
 	'''
 	today = date.today()
 	config = loadSettings()
-	print(config)
 	gameid = '_' + gameid
 	if gameid not in config:
 		config[gameid] = {}

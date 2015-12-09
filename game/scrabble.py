@@ -13,6 +13,7 @@ class Scrabble(ChoiceGame):
 
 		self.gameid = 'scrabble'
 		self.gameTime = 30
+		self.negative = -10
 
 		choice_y = self.lblQuestion.y - 30
 		self.choice1 = Choice('Choice 1', 0, self.width//2 - 100, choice_y )
@@ -46,7 +47,7 @@ class Scrabble(ChoiceGame):
 				self.choices[i].label.text = word.upper()
 			else:
 				pos = poss[0]
-				while pos in poss:
+				while pos in poss or checkAnagram(self.data[wlen][pos], word) == True:
 					pos = randint(leftPoint, rightPoint)
 				self.choices[i].label.text = self.data[wlen][pos].upper()
 				poss += [pos]
@@ -61,6 +62,15 @@ class Scrabble(ChoiceGame):
 		for _ in self.choices:
 			_.draw()
 
+
+
+def checkAnagram(word1, word2):
+	'''
+	check if two words are anagram of one another
+	'''
+	w1 = ''.join(sorted(word1)).upper()
+	w2 = ''.join(sorted(word2)).upper()
+	return w1 == w2
 
 
 def scrabbleWord(word):
