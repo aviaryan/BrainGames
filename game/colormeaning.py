@@ -6,7 +6,7 @@ from utils import maths
 
 class ColorMeaningGame(boolgame.BoolGame, Colors):
 
-	def __init__(self, width, height):
+	def __init__(self, width=700, height=500):
 
 		self.colors = [self.red[:], self.white[:], self.green[:], self.yellow[:]]
 		self.colornames = ['red', 'white', 'green', 'yellow']

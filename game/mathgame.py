@@ -9,7 +9,7 @@ class MathGame(boolgame.BoolGame):
 	operators = ['+', '-', '*', '/']
 
 
-	def __init__(self, width, height):
+	def __init__(self, width=600, height=500):
 
 		super().__init__('Math Game', width, height, color = '#004000')
 

@@ -4,7 +4,7 @@ from utils import draw, maths
 
 class ColorMatchGame(boolgame.BoolGame):
 
-	def __init__(self, width, height):
+	def __init__(self, width=700, height=500):
 
 		self.colors = [ [255,0,0] , [0,255,0] , [0,0,255] , [255,255,0] ]
 		self.shapes = ['circle', 'square', 'hexagon', 'triangle']

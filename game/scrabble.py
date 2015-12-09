@@ -5,7 +5,7 @@ from utils import maths
 
 class Scrabble(ChoiceGame):
 
-	def __init__(self, width, height):
+	def __init__(self, width=700, height=500):
 
 		self.data = loadWordlist()
 
