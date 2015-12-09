@@ -11,6 +11,7 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		super().__init__('Color Match', width, height, description='Check if previous color is same as current one.', color = '#0B3526')
 
+		self.gameid = 'colormatch'
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.previous = 0

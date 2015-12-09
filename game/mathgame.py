@@ -13,6 +13,7 @@ class MathGame(boolgame.BoolGame):
 
 		super().__init__('Math Game', width, height, color = '#004000')
 
+		self.gameid = 'mathgame'
 		self.negative = -10 # tryin to be fair
 		self.lblExp = pyglet.text.Label('..', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
 		self.window.dispatch_event('on_key_press', 21, '') # start the game, no need for description

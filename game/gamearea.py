@@ -20,6 +20,7 @@ class GameArea():
 		self.syncKey = False
 		self.gameTime = 10
 		self.timeLeft = 0
+		self.gameid = 'gamearea'
 
 		pyglet.clock.set_fps_limit(20)
 
@@ -51,7 +52,7 @@ class GameArea():
 
 		@self.window.event
 		def on_close():
-			exit(0)
+			self.window.set_visible(False)
 
 
 	def start(self):
@@ -59,6 +60,7 @@ class GameArea():
 		Run the game
 		'''
 		self.show()
+		return (self.gameid, self.score)
 
 
 	def show(self):

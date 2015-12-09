@@ -11,6 +11,7 @@ class Scrabble(ChoiceGame):
 
 		super().__init__('Word Scrabble', width, height, color = '#004040')
 
+		self.gameid = 'scrabble'
 		self.gameTime = 30
 
 		choice_y = self.lblQuestion.y - 30
