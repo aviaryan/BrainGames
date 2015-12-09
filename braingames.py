@@ -161,6 +161,7 @@ if __name__ == '__main__':
 				newgame = ''
 				newgame = GAMES[option]['func']()
 				gameresult = newgame.start()
+				settings.saveScore(gameresult[0], gameresult[1])
 				n = ''
 				n = gameover.GameOver(gameresult[0], gameresult[1])
 				result = n.start()

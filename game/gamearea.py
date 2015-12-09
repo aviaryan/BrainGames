@@ -52,6 +52,7 @@ class GameArea():
 
 		@self.window.event
 		def on_close():
+			pyglet.clock.unschedule(self.updateTime)
 			self.window.set_visible(False)
 			pyglet.app.exit()
 
@@ -61,6 +62,7 @@ class GameArea():
 		Run the game
 		'''
 		self.show()
+		self.window.pop_handlers()
 		self.window = ''
 		return (self.gameid, self.score)
 
@@ -122,8 +124,8 @@ class GameArea():
 		self.timeLeft -= 1
 		self.lblTimeLeft.text = str(self.timeLeft)
 		if self.timeLeft == 0:
-			self.endGame(0)
 			pyglet.clock.unschedule(self.updateTime)
+			self.endGame(0)
 
 
 	# def updateScoreFlyer(self, content):
