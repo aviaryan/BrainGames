@@ -11,9 +11,9 @@ from features import settings, gameover
 
 # newgame = colormatch.ColorMatchGame()
 # newgame = mathgame.MathGame()
-# newgame = calcgame.CalcGame()
-#newgame = scrabble.Scrabble()
-newgame = colormeaning.ColorMeaningGame()
+newgame = calcgame.CalcGame()
+# newgame = scrabble.Scrabble()
+# newgame = colormeaning.ColorMeaningGame()
 
 x = newgame.start()
 
@@ -23,3 +23,17 @@ n = gameover.GameOver(x[0], x[1])
 x = n.start()
 
 print(x)
+
+
+# cards with bg color = color game
+# mid titl
+# then description
+# class BrainGames():
+
+# 	def __init__(self):
+
+# 		width = 700
+# 		height = 550
+
+# 		self.window = pyglet.window.Window(width, height, caption = 'Brain Games')
+
