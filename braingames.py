@@ -8,10 +8,6 @@ from game import colormeaning
 from features import settings, gameover
 from utils.draw import rectangle, color2Array
 
-# newgame = boolgame.BoolGame('My game', width=700, height=500, description='test this thing')
-# newgame.show()
-# newgame.start()
-
 # newgame = colormatch.ColorMatchGame()
 # newgame = mathgame.MathGame()
 # newgame = calcgame.CalcGame()
@@ -32,21 +28,42 @@ GAMES = [
 		'name': 'Color Match',
 		'gameid': 'colormatch',
 		'func': colormatch.ColorMatchGame,
-		'description': 'Match if the previos color is same as current color',
+		'desc': 'Match if the previos color is same as current color',
 		'color': '#0B3526'
 	},
 	{
 		'name': 'Color Meaning',
 		'gameid': 'colormeaning',
 		'func': colormeaning.ColorMeaningGame,
-		'description': 'Check if the meaning on the left is same as color on the right',
+		'desc': 'Check if the meaning on the left is same as color on the right',
 		'color': '#0B3526'
+	},
+	{
+		'name': 'Math Game',
+		'gameid': 'mathgame',
+		'func': mathgame.MathGame,
+		'desc': 'Solve expressions fastly',
+		'color': '#004000'
+	},
+	{
+		'name': 'Calc Game',
+		'gameid': 'calcgame',
+		'func': calcgame.CalcGame,
+		'desc': 'solve equations and write answers',
+		'color': '#400000'
+	},
+	{
+		'name': 'Scrabble',
+		'gameid': 'scrabble',
+		'func': scrabble.Scrabble,
+		'desc': 'Choose the correct option for the jumbled word',
+		'color': '#004040'
 	}
 ]
 
 # cards with bg color = color game
 # mid titl
-# then description
+# then desc
 
 class BrainGames():
 	'''
@@ -60,18 +77,21 @@ class BrainGames():
 		self.window = pyglet.window.Window(width, height, caption = 'Brain Games')
 		self.heading = pyglet.text.Label('Brain Games', font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
 
-		self.card0 = Card(GAMES[0]['name'], 0, 30, self.heading.y - 40, GAMES[0]['color'], description = GAMES[0]['description'])
-		self.card1 = Card(GAMES[1]['name'], 1, 10 + self.card0.w + 50, self.heading.y - 40, GAMES[1]['color'], description = GAMES[1]['description'])
+		self.card0 = Card(GAMES[0]['name'], 0, 30, self.heading.y - 40, GAMES[0]['color'], desc = GAMES[0]['desc'])
+		self.card1 = Card(GAMES[1]['name'], 1, 30 + self.card0.w + 40, self.card0.y, GAMES[1]['color'], desc = GAMES[1]['desc'])
+		self.card2 = Card(GAMES[2]['name'], 2, 30, self.card0.y - self.card0.h - 20, GAMES[2]['color'], desc = GAMES[2]['desc'])
+		self.card3 = Card(GAMES[3]['name'], 3, 30 + self.card2.w + 40, self.card2.y, GAMES[3]['color'], desc = GAMES[3]['desc'])
+		self.card4 = Card(GAMES[4]['name'], 4, 30, self.card2.y - self.card2.h - 20, GAMES[4]['color'], desc = GAMES[4]['desc'])
 
 		self.option = 'colormatch'
-		self.clickables = [self.card0, self.card1]
+		self.clickables = [self.card0, self.card1, self.card2, self.card3, self.card4]
 
 		@self.window.event
 		def on_draw():
 			self.window.clear()
 			self.heading.draw()
-			self.card0.draw()
-			self.card1.draw()
+			for i in self.clickables:
+				i.draw()
 
 
 		@self.window.event
@@ -99,6 +119,7 @@ class BrainGames():
 
 	def click_event(self, value):
 		self.selected = value
+		self.window.set_visible(False)
 		pyglet.app.exit()
 
 
@@ -111,27 +132,39 @@ class Card():
 	h = 100
 	header_size = 16
 
-	def __init__(self, heading, value, x, y, color, description=''):
+	def __init__(self, heading, value, x, y, color, desc=''):
 		self.value = value
 		self.x = x
 		self.y = y
 		if str(type(color)).find('str') > -1:
 			color = color2Array(color)
 		self.color = color
-		self.heading = pyglet.text.Label(heading, x = x + self.w // 2, y = y, anchor_x = 'center', anchor_y = 'top', font_size = self.header_size)
-		self.description = pyglet.text.Label(description, x = x + 5, y = y - 50, width = self.w - 10, multiline = True)
+		self.heading = pyglet.text.Label(heading, x = x + self.w // 2, y = y - 10, anchor_x = 'center', anchor_y = 'top', font_size = self.header_size, font_name = 'Verdana')
+		self.desc = pyglet.text.Label(desc, x = x + 10, y = self.heading.y - 50, width = self.w - 20, multiline = True)
 
 
 	def draw(self):
 		self.figure = rectangle(self.x, self.y, self.w, self.h, filled=True, color=self.color)
 		self.figure.draw()
 		self.heading.draw()
-		self.description.draw()
+		self.desc.draw()
 
 
 if __name__ == '__main__':
 
-	x = BrainGames()
-	option = x.start()
-	if option > -1:
-		print(option)
+	while True:
+		x = ''
+		x = BrainGames()
+		option = x.start()
+		if option > -1:
+			while True:
+				newgame = ''
+				newgame = GAMES[option]['func']()
+				gameresult = newgame.start()
+				n = ''
+				n = gameover.GameOver(gameresult[0], gameresult[1])
+				result = n.start()
+				if result == 0:
+					break
+		else:
+			break

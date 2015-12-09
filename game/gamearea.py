@@ -53,6 +53,7 @@ class GameArea():
 		@self.window.event
 		def on_close():
 			self.window.set_visible(False)
+			pyglet.app.exit()
 
 
 	def start(self):
@@ -60,6 +61,7 @@ class GameArea():
 		Run the game
 		'''
 		self.show()
+		self.window = ''
 		return (self.gameid, self.score)
 
 
@@ -142,7 +144,8 @@ class GameArea():
 		while self.syncKey:
 			pass
 		self.syncKey = True
-
+		self.window.set_visible(False)
+		pyglet.app.exit()
 
 
 if __name__ == '__main__':

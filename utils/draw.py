@@ -15,8 +15,8 @@ class RectangularButton():
 		self.y = y
 		self.w = w
 		self.h = h
-		self.color = color
-		self.textcolor = textcolor
+		self.color = color[:]
+		self.textcolor = textcolor[:]
 		self.textsize = textsize
 		if len(self.textcolor) == 3:
 			self.textcolor += [255]

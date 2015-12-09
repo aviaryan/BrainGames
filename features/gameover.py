@@ -31,6 +31,7 @@ class GameOver():
 		@self.window.event
 		def on_close():
 			self.window.set_visible(False)
+			self.retCode = 0
 
 
 		@self.window.event
@@ -48,6 +49,7 @@ class GameOver():
 
 	def start(self):
 		pyglet.app.run()
+		self.window = ''
 		return self.retCode
 
 
