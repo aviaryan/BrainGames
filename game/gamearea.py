@@ -99,6 +99,7 @@ class GameArea():
 			color = draw.color2Array(color)
 		if len(color) == 3:
 			color += [255]
+		self.bgColor = color[:]
 		pyglet.gl.glClearColor( color[0] / 255.0 , color[1] / 255.0 , color[2] / 255.0 , color[3] / 255.0 )
 
 
