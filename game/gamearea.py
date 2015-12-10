@@ -52,8 +52,7 @@ class GameArea():
 
 		@self.window.event
 		def on_close():
-			pyglet.clock.unschedule(self.updateTime)
-			pyglet.app.exit()
+			self.cleanup(True)
 
 
 	def start(self):
@@ -61,11 +60,15 @@ class GameArea():
 		Run the game
 		'''
 		self.show()
-		self.window.pop_handlers()
-		# self.soundCorrect.delete()
-		# self.soundFail.delete()
-		self.window = ''
 		return (self.gameid, self.score)
+
+
+	def cleanup(self, advanced=True):
+		if advanced:
+			pyglet.clock.unschedule(self.updateTime)
+		self.window.pop_handlers()
+		self.window.close()
+		pyglet.app.exit()
 
 
 	def show(self):
@@ -126,7 +129,7 @@ class GameArea():
 		self.lblTimeLeft.text = str(self.timeLeft)
 		if self.timeLeft == 0:
 			pyglet.clock.unschedule(self.updateTime)
-			self.endGame(0)
+			self.endGame()
 
 
 	# def updateScoreFlyer(self, content):
@@ -142,13 +145,12 @@ class GameArea():
 	# 	Thread( motion.slide(flyer, flyer.x, flyer.y + 200, 0, 20) ).start()
 
 
-	def endGame(self, dt):
+	def endGame(self):
 		print('Game over')
 		while self.syncKey:
 			pass
 		self.syncKey = True
-		self.window.close()
-		pyglet.app.exit()
+		self.cleanup(False)
 
 
 if __name__ == '__main__':

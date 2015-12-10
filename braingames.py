@@ -61,9 +61,6 @@ GAMES = [
 	}
 ]
 
-# cards with bg color = color game
-# mid titl
-# then desc
 
 class BrainGames():
 	'''

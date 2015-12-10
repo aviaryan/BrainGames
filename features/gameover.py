@@ -30,7 +30,6 @@ class GameOver():
 
 		@self.window.event
 		def on_close():
-			# self.window.set_visible(False)
 			self.retCode = 0
 
 
@@ -49,10 +48,9 @@ class GameOver():
 
 	def start(self):
 		pyglet.app.run()
-		self.againBtn.figure.delete()
-		self.backBtn.figure.delete()
+		# self.againBtn.figure.delete()
+		# self.backBtn.figure.delete()
 		self.window.pop_handlers()
-		self.window = ''
 		return self.retCode
 
 
