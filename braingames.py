@@ -28,7 +28,7 @@ GAMES = [
 		'name': 'Color Match',
 		'gameid': 'colormatch',
 		'func': colormatch.ColorMatchGame,
-		'desc': 'Match if the previos color is same as current color',
+		'desc': 'Match if the previous color is same as current color',
 		'color': '#0B3526'
 	},
 	{
@@ -42,14 +42,14 @@ GAMES = [
 		'name': 'Math Game',
 		'gameid': 'mathgame',
 		'func': mathgame.MathGame,
-		'desc': 'Solve expressions fastly',
+		'desc': 'Tell if the inequality is true or not',
 		'color': '#004000'
 	},
 	{
 		'name': 'Calc Game',
 		'gameid': 'calcgame',
 		'func': calcgame.CalcGame,
-		'desc': 'solve equations and write answers',
+		'desc': 'solve expressions and write answers',
 		'color': '#400000'
 	},
 	{
@@ -148,6 +148,15 @@ class Card():
 		self.desc.draw()
 
 
+def getGame(gameid):
+	'''
+	Get the game from GAMES array searching through game id
+	'''
+	for i in GAMES:
+		if i['gameid'] == gameid:
+			return i
+
+
 if __name__ == '__main__':
 
 	while True:
@@ -158,10 +167,11 @@ if __name__ == '__main__':
 		if option > -1:
 			while True:
 				newgame = GAMES[option]['func']()
-				gameresult = newgame.start()
+				result = newgame.start()
 				newgame = ''
-				settings.saveScore(gameresult[0], gameresult[1])
-				n = gameover.GameOver(gameresult[0], gameresult[1])
+				settings.saveScore(result['gameid'], result['score'])
+				game = getGame(result['gameid'])
+				n = gameover.GameOver(game['name'], result['score'], width = result['width'], height = result['height'])
 				result = n.start()
 				n = ''
 				if result == 0:

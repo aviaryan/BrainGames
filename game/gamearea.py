@@ -57,7 +57,12 @@ class GameArea():
 		Run the game
 		'''
 		self.show()
-		return (self.gameid, self.score)
+		return {
+				'gameid': self.gameid,
+				'score': self.score,
+				'width': self.width,
+				'height': self.height
+			}
 
 
 	def cleanup(self, advanced=True):

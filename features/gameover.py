@@ -4,10 +4,8 @@ from utils.draw import RectangularButton
 
 class GameOver():
 
-	def __init__(self, title, score):
+	def __init__(self, title, score, width=600, height=500):
 
-		width = 600
-		height = 500
 		self.window = pyglet.window.Window(width, height, caption = title)
 		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
 
