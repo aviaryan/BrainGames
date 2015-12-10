@@ -18,7 +18,7 @@ class ColorMatchGame(boolgame.BoolGame):
 		self.previous_shape = 0
 
 
-	def game_on_draw(self):
+	def on_draw(self):
 		'''
 		Default on_draw event for the game
 		'''

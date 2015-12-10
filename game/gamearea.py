@@ -1,7 +1,5 @@
 import pyglet
-from utils import draw, motion
-from sys import exit
-
+from utils import draw
 
 
 class GameArea():
@@ -44,7 +42,6 @@ class GameArea():
 
 		@self.window.event
 		def on_draw():
-			# self.window.clear()
 			self.heading.draw()
 			self.description.draw()
 			self.lblScore.draw()

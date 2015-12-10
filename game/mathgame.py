@@ -19,7 +19,7 @@ class MathGame(boolgame.BoolGame):
 		self.window.dispatch_event('on_key_press', 21, '') # start the game, no need for description
 
 
-	def game_on_draw(self):
+	def on_draw(self):
 		'''
 		Default on_draw event for the game
 		'''

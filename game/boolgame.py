@@ -1,7 +1,6 @@
 from game import gamearea
-from utils import draw, motion
+from utils import draw
 from pyglet.window import key
-from pyglet import clock
 
 
 class BoolGame(gamearea.GameArea):
@@ -15,7 +14,7 @@ class BoolGame(gamearea.GameArea):
 
 		super().__init__(title, width, height, **kwargs)
 
-		self.window.push_handlers(on_draw = self.game_on_draw)
+		self.window.push_handlers(on_draw = self.on_draw)
 		
 
 		@self.window.event
@@ -34,7 +33,7 @@ class BoolGame(gamearea.GameArea):
 				self.submit(True)
 
 
-	def game_on_draw(self):
+	def on_draw(self):
 		pass
 
 

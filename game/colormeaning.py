@@ -18,7 +18,7 @@ class ColorMeaningGame(boolgame.BoolGame, Colors):
 		self.rightBtn = RectangularButton('white', 1, self.width//2 + 20, self.description.y - 100, w = 120, h = 100, color = self.solarized, textcolor=self.yellow, textsize = 22)
 
 
-	def game_on_draw(self):
+	def on_draw(self):
 		self.window.clear()
 		self.leftBtn.draw()
 		self.rightBtn.draw()
