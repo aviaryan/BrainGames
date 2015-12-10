@@ -28,7 +28,7 @@ class ColorMeaningGame(boolgame.BoolGame, Colors):
 
 		self.syncKey = True
 
-		self.answer = maths.weightedRandomIndex([0.6, 0.4]) # 0.6 for 0 i.e wrong answer
+		self.answer = maths.weightedRandomIndex([0.5, 0.5]) # 0.5 for 0 i.e wrong answer
 		leftid = maths.randint(0,3)
 		leftnameid = maths.randint(0,3)
 

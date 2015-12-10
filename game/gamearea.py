@@ -53,7 +53,7 @@ class GameArea():
 		@self.window.event
 		def on_close():
 			pyglet.clock.unschedule(self.updateTime)
-			self.window.set_visible(False)
+			# self.window.set_visible(False)
 			pyglet.app.exit()
 
 
@@ -63,6 +63,8 @@ class GameArea():
 		'''
 		self.show()
 		self.window.pop_handlers()
+		# self.soundCorrect.delete()
+		# self.soundFail.delete()
 		self.window = ''
 		return (self.gameid, self.score)
 

@@ -44,8 +44,8 @@ class MathGame(boolgame.BoolGame):
 		Generates a random inequality for this game
 		'''
 		chComparator = maths.weightedRandomIndex([0.24, 0.38, 0.38])
-		leftSize = maths.weightedRandomIndex([0.15, 0.75]) + 1
-		rightSize = maths.weightedRandomIndex([0.2, 0.8]) + 1
+		leftSize = maths.weightedRandomIndex([0.15, 0.85]) + 1
+		rightSize = maths.weightedRandomIndex([0.15, 0.85]) + 1
 
 		lhs = self.genExpression(leftSize)
 		rhs = self.genExpression(rightSize)

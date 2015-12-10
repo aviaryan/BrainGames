@@ -30,7 +30,7 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		self.syncKey = True
 
-		self.answer = maths.weightedRandomIndex([0.65, 0.35]) # 0.65 for 0 i.e wrong answer
+		self.answer = maths.weightedRandomIndex([0.55, 0.45]) # 0.65 for 0 i.e wrong answer
 
 		if self.answer == 1:
 			col = self.previous

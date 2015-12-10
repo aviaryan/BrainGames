@@ -114,6 +114,7 @@ class BrainGames():
 
 	def start(self):
 		pyglet.app.run()
+		self.window.pop_handlers()
 		return self.selected
 
 
