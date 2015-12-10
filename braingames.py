@@ -154,7 +154,8 @@ if __name__ == '__main__':
 				result = newgame.start()
 				settings.saveScore(result['gameid'], result['score'])
 				game = getGame(result['gameid'])
-				n = gameover.GameOver(game['name'], result['score'], width = result['width'], height = result['height'])
+				n = gameover.GameOver( game['name'], result['score'], width = result['width'], height = result['height'], 
+					highscore = settings.getHighScore(result['gameid']) )
 				result = n.start()
 				if result == 0:
 					break

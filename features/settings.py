@@ -54,7 +54,8 @@ def getHighScore(gameid):
 	'''
 	gconfig = loadGameSettings(gameid)
 	scores = gconfig.get('scores', {})
-	scores['default'] = 0
+	if len(scores) == 0:
+		return 0
 	return max( scores[i] for i in scores )
 
 
