@@ -48,6 +48,16 @@ def saveScore(gameid, score):
 	saveSettings(config)
 
 
+def getHighScore(gameid):
+	'''
+	get highest score in a game
+	'''
+	gconfig = loadGameSettings(gameid)
+	scores = gconfig.get('scores', {})
+	scores['default'] = 0
+	return max( scores[i] for i in scores )
+
+
 def loadGameSettings(gameid):
 	'''
 	loads settings for a game, if setting is not present, return default

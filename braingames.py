@@ -146,20 +146,16 @@ def getGame(gameid):
 if __name__ == '__main__':
 
 	while True:
-		x = ''
 		x = BrainGames()
 		option = x.start()
-		x = ''
 		if option > -1:
 			while True:
 				newgame = GAMES[option]['func']()
 				result = newgame.start()
-				newgame = ''
 				settings.saveScore(result['gameid'], result['score'])
 				game = getGame(result['gameid'])
 				n = gameover.GameOver(game['name'], result['score'], width = result['width'], height = result['height'])
 				result = n.start()
-				n = ''
 				if result == 0:
 					break
 		else:
