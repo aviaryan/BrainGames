@@ -1,18 +1,18 @@
 from game import boolgame
-from utils import draw, maths
+from utils import draw, maths, colors
 
 
-class ColorMatchGame(boolgame.BoolGame):
+class ColorMatchGame(boolgame.BoolGame, colors.Colors):
 
 	def __init__(self, width=700, height=500):
 
 		self.gameid = 'colormatch'
-		self.colors = [ [255,0,0] , [0,255,0] , [0,0,255] , [255,255,0] ]
+		self.colors = [ self.red , self.green , self.blue , self.yellow ]
 		self.shapes = ['circle', 'square', 'hexagon', 'triangle']
 
-		super().__init__('Color Match', width, height, description='Check if previous color is same as current one.', color = '#0B3526')
+		boolgame.BoolGame.__init__(self, 'Color Match', width, height, description='Check if previous color is same as the current one', color = '#0B3526')
 		self.loadGameSettings()
-		
+
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.previous = 0

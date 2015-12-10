@@ -8,20 +8,6 @@ from game import colormeaning
 from features import settings, gameover
 from utils.draw import rectangle, color2Array
 
-# newgame = colormatch.ColorMatchGame()
-# newgame = mathgame.MathGame()
-# newgame = calcgame.CalcGame()
-# # newgame = scrabble.Scrabble()
-# # newgame = colormeaning.ColorMeaningGame()
-
-# x = newgame.start()
-
-# settings.saveScore(x[0], x[1])
-
-# n = gameover.GameOver(x[0], x[1])
-# x = n.start()
-
-# print(x)
 
 GAMES = [
 	{
