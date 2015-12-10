@@ -42,11 +42,19 @@ class Figure():
 		self.figure = figure
 		self.drawmode = mode
 
+
 	def draw(self):
 		'''
 		Draw the figure on the window
 		'''
 		self.figure.draw(self.drawmode)
+
+
+	def delete(self):
+		'''
+		Delete the figure
+		'''
+		self.figure.delete()
 
 
 def _setColor(color=[]):

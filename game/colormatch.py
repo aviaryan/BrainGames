@@ -47,7 +47,7 @@ class ColorMatchGame(boolgame.BoolGame):
 
 		self.previous = col
 		self.previous_shape = shape
-		self.curshape.figure.delete()
+		self.curshape.delete()
 
 		if cshape == 'square':
 			self.curshape = draw.square(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])

@@ -114,13 +114,13 @@ class BrainGames():
 
 	def start(self):
 		pyglet.app.run()
-		self.window.pop_handlers()
 		return self.selected
 
 
 	def click_event(self, value):
 		self.selected = value
-		self.window.set_visible(False)
+		self.window.pop_handlers()
+		self.window.close()
 		pyglet.app.exit()
 
 
@@ -157,15 +157,16 @@ if __name__ == '__main__':
 		x = ''
 		x = BrainGames()
 		option = x.start()
+		x = ''
 		if option > -1:
 			while True:
-				newgame = ''
 				newgame = GAMES[option]['func']()
 				gameresult = newgame.start()
+				newgame = ''
 				settings.saveScore(gameresult[0], gameresult[1])
-				n = ''
 				n = gameover.GameOver(gameresult[0], gameresult[1])
 				result = n.start()
+				n = ''
 				if result == 0:
 					break
 		else:

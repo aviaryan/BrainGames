@@ -22,7 +22,7 @@ class GameArea():
 		self.timeLeft = 0
 		self.gameid = 'gamearea'
 
-		pyglet.clock.set_fps_limit(20)
+		# pyglet.clock.set_fps_limit(20)
 
 		self.components = []
 		self.window = pyglet.window.Window(width, height, caption = title)
@@ -53,7 +53,6 @@ class GameArea():
 		@self.window.event
 		def on_close():
 			pyglet.clock.unschedule(self.updateTime)
-			# self.window.set_visible(False)
 			pyglet.app.exit()
 
 
@@ -148,7 +147,7 @@ class GameArea():
 		while self.syncKey:
 			pass
 		self.syncKey = True
-		self.window.set_visible(False)
+		self.window.close()
 		pyglet.app.exit()
 
 
