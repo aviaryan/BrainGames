@@ -93,7 +93,7 @@ def loadWordlist():
 	data = dict()
 	for i in range(5,10+1):
 		data[i] = []
-	path = 'resources/Wordlist_3600.txt'
+	path = 'resources/corncob_caps.txt'
 	with open(path) as f:
 		for line in f:
 			if not line[:-1].isalpha():
