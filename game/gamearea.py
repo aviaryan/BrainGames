@@ -19,7 +19,7 @@ class GameArea():
 		self.negative = -20
 		self.syncKey = False
 		self.gameTime = 45
-		self.timeLeft = 0
+		self.timeLeft = self.gameTime
 		self._loadSetting( settings.loadSettings() )
 
 		self.components = []
@@ -59,7 +59,7 @@ class GameArea():
 		self.show()
 		return {
 				'gameid': self.gameid,
-				'score': self.score,
+				'score': self.score if self.timeLeft == 0 else '',
 				'width': self.width,
 				'height': self.height
 			}

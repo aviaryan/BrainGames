@@ -32,6 +32,8 @@ def saveScore(gameid, score):
 	'''
 	saves score for a game
 	'''
+	if score == '':
+		return
 	today = date.today()
 	config = loadSettings()
 	gameid = '_' + gameid
