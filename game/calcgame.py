@@ -10,10 +10,12 @@ class CalcGame(SubjectiveGame):
 
 	def __init__(self, width=600, height=500):
 
+		self.gameid = 'calcgame'
 		super().__init__('Calculate Game', width, height, color = '#400000')
 
-		self.gameid = 'calcgame'
 		self.gameTime = 45
+		self.loadGameSettings()
+		
 		self.lblExp = pyglet.text.Label('2 + 4', x = self.width//2, anchor_x='center', y = self.description.y - 100, font_size = 20)
 		self.addNew()
 		self.beginPlay()

@@ -8,12 +8,13 @@ class ColorMeaningGame(boolgame.BoolGame, Colors):
 
 	def __init__(self, width=700, height=500):
 
+		self.gameid = 'colormeaning'
 		self.colors = [self.red[:], self.white[:], self.green[:], self.yellow[:]]
 		self.colornames = ['red', 'white', 'green', 'yellow']
 
 		boolgame.BoolGame.__init__(self, 'Color Meaning', width, height, description='Check if meaning of text on left is same as color of text on right', color = '#0B3526')
+		self.loadGameSettings()
 
-		self.gameid = 'colormeaning'
 		self.leftBtn = RectangularButton('yellow', 1, self.width//2 - 120, self.description.y - 100, w = 120, h = 100, color = self.solarized, textcolor=self.red, textsize = 22)
 		self.rightBtn = RectangularButton('white', 1, self.width//2 + 20, self.description.y - 100, w = 120, h = 100, color = self.solarized, textcolor=self.yellow, textsize = 22)
 

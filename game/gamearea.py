@@ -1,5 +1,6 @@
 import pyglet
 from utils import draw
+from features import settings
 
 
 class GameArea():
@@ -12,13 +13,13 @@ class GameArea():
 		Init Game Area class
 		'''
 
+		# self.gameid = ''
 		self.score = 0
 		self.positive = 10
 		self.negative = -20
 		self.syncKey = False
 		self.gameTime = 10
 		self.timeLeft = 0
-		self.gameid = 'gamearea'
 
 		# pyglet.clock.set_fps_limit(20)
 
@@ -133,6 +134,12 @@ class GameArea():
 			pyglet.clock.unschedule(self.updateTime)
 			self.endGame()
 
+
+	def loadGameSettings(self):
+		config = settings.loadGameSettings(self.gameid)
+		self.gameTime = config.get('gameTime', self.gameTime)
+		self.positive = config.get('positive', self.positive)
+		self.negative = config.get('negative', self.negative)
 
 	# def updateScoreFlyer(self, content):
 	# 	'''

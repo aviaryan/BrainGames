@@ -7,13 +7,13 @@ class Scrabble(ChoiceGame):
 
 	def __init__(self, width=700, height=500):
 
+		self.gameid = 'scrabble'
 		self.data = loadWordlist()
 
 		super().__init__('Word Scrabble', width, height, color = '#004040')
 
-		self.gameid = 'scrabble'
-		self.gameTime = 30
 		self.negative = -10
+		self.loadGameSettings()
 
 		choice_y = self.lblQuestion.y - 30
 		self.choice1 = Choice('Choice 1', 0, self.width//2 - 100, choice_y )

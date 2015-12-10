@@ -6,12 +6,13 @@ class ColorMatchGame(boolgame.BoolGame):
 
 	def __init__(self, width=700, height=500):
 
+		self.gameid = 'colormatch'
 		self.colors = [ [255,0,0] , [0,255,0] , [0,0,255] , [255,255,0] ]
 		self.shapes = ['circle', 'square', 'hexagon', 'triangle']
 
 		super().__init__('Color Match', width, height, description='Check if previous color is same as current one.', color = '#0B3526')
-
-		self.gameid = 'colormatch'
+		self.loadGameSettings()
+		
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
 		self.curshape.draw()
 		self.previous = 0
