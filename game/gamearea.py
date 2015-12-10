@@ -18,10 +18,9 @@ class GameArea():
 		self.positive = 10
 		self.negative = -20
 		self.syncKey = False
-		self.gameTime = 10
+		self.gameTime = 45
 		self.timeLeft = 0
-
-		# pyglet.clock.set_fps_limit(20)
+		self._loadSetting( settings.loadSettings() )
 
 		self.components = []
 		self.window = pyglet.window.Window(width, height, caption = title)
@@ -136,10 +135,18 @@ class GameArea():
 
 
 	def loadGameSettings(self):
+		'''
+		load game specific settings from file
+		'''
 		config = settings.loadGameSettings(self.gameid)
+		self._loadSetting(config)
+
+
+	def _loadSetting(self, config):
 		self.gameTime = config.get('gameTime', self.gameTime)
 		self.positive = config.get('positive', self.positive)
 		self.negative = config.get('negative', self.negative)
+
 
 	# def updateScoreFlyer(self, content):
 	# 	'''
