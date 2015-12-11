@@ -5,8 +5,14 @@ from game import mathgame
 from game import calcgame
 from game import scrabble
 from game import colormeaning
+from game import dictionarygame
 from features import settings, gameover
 from utils.draw import rectangle, color2Array
+
+# from sys import exit
+# x = dictionarygame.DictionaryGame()
+# print( x.start() )
+# exit()
 
 
 GAMES = [
@@ -44,6 +50,13 @@ GAMES = [
 		'func': scrabble.Scrabble,
 		'desc': 'Choose the correct option for the jumbled word',
 		'color': '#004040'
+	},
+	{
+		'name': 'Dictionary game',
+		'gameid': 'dictionary',
+		'func': dictionarygame.DictionaryGame,
+		'desc': 'Choose the word which means the same as text provided',
+		'color': '#0C276C'
 	}
 ]
 
@@ -65,9 +78,10 @@ class BrainGames():
 		self.card2 = Card(GAMES[2]['name'], 2, 30, self.card0.y - self.card0.h - 20, GAMES[2]['color'], desc = GAMES[2]['desc'])
 		self.card3 = Card(GAMES[3]['name'], 3, 30 + self.card2.w + 40, self.card2.y, GAMES[3]['color'], desc = GAMES[3]['desc'])
 		self.card4 = Card(GAMES[4]['name'], 4, 30, self.card2.y - self.card2.h - 20, GAMES[4]['color'], desc = GAMES[4]['desc'])
+		self.card5 = Card(GAMES[5]['name'], 5, 30 + self.card4.w + 40, self.card4.y, GAMES[5]['color'], desc = GAMES[5]['desc'])
 
 		self.option = 'colormatch'
-		self.clickables = [self.card0, self.card1, self.card2, self.card3, self.card4]
+		self.clickables = [self.card0, self.card1, self.card2, self.card3, self.card4, self.card5]
 
 		@self.window.event
 		def on_draw():
