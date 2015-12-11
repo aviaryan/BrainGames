@@ -20,6 +20,7 @@ class GameArea():
 		self.syncKey = False
 		self.gameTime = 45
 		self.timeLeft = self.gameTime
+		self.gameStatus = -1 # not started | started | over
 		self._loadSetting( settings.loadSettings() )
 
 		self.components = []
@@ -59,7 +60,7 @@ class GameArea():
 		self.show()
 		return {
 				'gameid': self.gameid,
-				'score': self.score if self.timeLeft == 0 else '',
+				'score': self.score if self.gameStatus == 1 else '',
 				'width': self.width,
 				'height': self.height
 			}
@@ -123,15 +124,29 @@ class GameArea():
 	def beginPlay(self):
 		self.lblTimeLeft.text = str(self.gameTime)
 		self.timeLeft = self.gameTime
-		pyglet.clock.schedule_interval(self.updateTime, 1)
+		self.gameStatus = 0
+		if self.timeLeft == 0:
+			self.endTime()
+		else:
+			pyglet.clock.schedule_interval(self.updateTime, 1)
+
+
+	def endTime(self):
+		'''
+		launched when time ends
+		'''
+		self.endGame()
 
 
 	def updateTime(self, dt):
+		'''
+		runs sec after sec, updating timeLeft
+		'''
 		self.timeLeft -= 1
 		self.lblTimeLeft.text = str(self.timeLeft)
-		if self.timeLeft == 0:
+		if self.timeLeft < 1:
 			pyglet.clock.unschedule(self.updateTime)
-			self.endGame()
+			self.endTime()
 
 
 	def loadGameSettings(self):
@@ -148,24 +163,15 @@ class GameArea():
 		self.negative = config.get('negative', self.negative)
 
 
-	# def updateScoreFlyer(self, content):
-	# 	'''
-	# 	Shows the score flyer animation
-	# 	'''
-	# 	for i in self.components_temp:
-	# 		i.delete()
-	# 	self.components_temp = []
-	# 	flyer = pyglet.text.Label(content, font_size=20, x = self.lblScore.x, y = self.lblScore.y - 200)
-	# 	self.components_temp += [flyer]
-	# 	flyer.draw()
-	# 	Thread( motion.slide(flyer, flyer.x, flyer.y + 200, 0, 20) ).start()
-
-
 	def endGame(self):
+		'''
+		ends the game
+		'''
 		print('Game over')
 		while self.syncKey:
 			pass
 		self.syncKey = True
+		self.gameStatus = 1
 		self.cleanup(False)
 
 

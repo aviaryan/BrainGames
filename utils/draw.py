@@ -33,6 +33,15 @@ class RectangularButton():
 		self.label.draw()
 
 
+	def changecolor(self, newcolor=[255,255,0]):
+		'''
+		change button color
+		'''
+		self.figure.delete()
+		self.color = newcolor[:]
+		self.draw()
+
+
 
 class Figure():
 	'''
