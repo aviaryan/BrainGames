@@ -53,6 +53,8 @@ class ChoiceGame(GameArea):
 
 	def on_draw(self):
 		self.window.clear()
+		for _ in self.choices:
+			_.draw()
 
 
 

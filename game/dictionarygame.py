@@ -81,12 +81,6 @@ class DictionaryGame(QuesGame, ChoiceGame):
 		self.syncKey = False
 
 
-	def on_draw(self):
-		self.window.clear()
-		for _ in self.choices:
-			_.draw()
-
-
 
 def loadDictionary():
 	'''
