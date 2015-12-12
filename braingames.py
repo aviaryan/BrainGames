@@ -38,7 +38,7 @@ class BrainGames():
 		self.window = pyglet.window.Window(width, height, caption = 'Brain Games')
 		self.heading = pyglet.text.Label('Brain Games', font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
 
-		self.card0 = Card(GAMES[0]['name'], 0, 30, self.heading.y - 40, GAMES[0]['color'], desc = GAMES[0]['desc'])
+		self.card0 = Card(GAMES[0]['name'], 0, 30, self.heading.y - 60, GAMES[0]['color'], desc = GAMES[0]['desc'])
 		self.card1 = Card(GAMES[1]['name'], 1, 30 + self.card0.w + 40, self.card0.y, GAMES[1]['color'], desc = GAMES[1]['desc'])
 		self.card2 = Card(GAMES[2]['name'], 2, 30, self.card0.y - self.card0.h - 20, GAMES[2]['color'], desc = GAMES[2]['desc'])
 		self.card3 = Card(GAMES[3]['name'], 3, 30 + self.card2.w + 40, self.card2.y, GAMES[3]['color'], desc = GAMES[3]['desc'])

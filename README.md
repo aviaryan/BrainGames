@@ -3,6 +3,17 @@
 Simple games to boost your brain
 
 
+### Screenshots
+
+![Brain Games main page](http://s5.postimg.org/samoipo3b/braingames_1_0.png)
+
+![Math Game](http://s5.postimg.org/5zytiqqt3/mathgame.png)
+
+![Dictionary Game](http://s5.postimg.org/rawdn08xj/dictionary.png)
+
+![Scores page](http://s5.postimg.org/5jdlwb31z/score.png)
+
+
 ### Requirements
 
 * Python 3
