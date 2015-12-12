@@ -1,6 +1,6 @@
 __pycache__
 test-*
-*.json
+braingames.json
 corncob_caps_orig.txt
 build
 dist
