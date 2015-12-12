@@ -1,4 +1,3 @@
-# from game import subjectivegame
 from game.subjectivegame import SubjectiveGame
 import pyglet
 from utils import maths
@@ -10,7 +9,7 @@ class CalcGame(SubjectiveGame):
 	color = '#400000'
 	descriptiontext = 'Calculate Math expressions, fast !!'
 	gameid = 'calcgame'
-	
+
 	operators = ['+', '-', '*', '/']
 
 	def __init__(self, width=600, height=500):
@@ -57,8 +56,8 @@ class CalcGame(SubjectiveGame):
 		Generate the expression
 		'''
 		oprPDF = [0.35, 0.20, 0.30, 0.15]
-		numRange = [(1,9) , (9,15) , (15,40)]
-		numPDF = [0.6, 0.37, 0.13]
+		numRange = [(1,9) , (9,19) , (19,35)]
+		numPDF = [0.5, 0.35, 0.15]
 
 		if size == 2:
 			exp = self.genExpression2(oprPDF)
@@ -66,7 +65,7 @@ class CalcGame(SubjectiveGame):
 			exp1 = self.genExpression2(oprPDF)
 			ans1 = eval(''.join(str(i) for i in exp1))
 			opr = self.operators[ maths.weightedRandomIndex([0.4, 0.2, 0.3, 0.1]) ]
-			exp2 = maths.getSecondOperand(ans1, opr, multiplyLimit = 200, numPDF = numPDF, numRange = numRange)
+			exp2 = maths.getSecondOperand(ans1, opr, multiplyLimit = 150, numPDF = numPDF, numRange = numRange)
 			exp = ['('] + exp1 + [')'] + [opr, exp2]
 		elif size == 4:
 			exp1 = self.genExpression2(oprPDF)
@@ -79,13 +78,13 @@ class CalcGame(SubjectiveGame):
 
 	def genExpression2(self, oprPDF):
 		index = maths.weightedRandomIndex(oprPDF)
-		numRange = [(1,9) , (9,15) , (15,40)]
-		numPDF = [0.6, 0.37, 0.13]
+		numRange = [(1,9) , (9,19) , (19,35)]
+		numPDF = [0.5, 0.35, 0.15]
 		n1 = round(maths.weightedRandomRange(numPDF, numRange))
 		opr = self.operators[index]
 		n2 = maths.getSecondOperand(n1, opr, multiplyLimit = 100, numPDF = [0.2, 0.4, 0.3], numRange = numRange)
 		if opr == '+':
-			numPDF = [0.2, 0.4, 0.3]
+			numPDF = [0.2, 0.4, 0.4]
 			n1 = round(maths.weightedRandomRange(numPDF, numRange))
 
 		return [n1, opr, n2]

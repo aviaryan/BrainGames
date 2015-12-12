@@ -16,7 +16,7 @@ def getSecondOperand(n1, opr, multiplyLimit = 100, numPDF=[1.0], numRange=[(1,9)
 		n2 = getDoableMultiply(n1, multiplyLimit)
 	else:
 		n2 = round(weightedRandomRange(numPDF, numRange))
-	return n2
+	return int(n2)
 
 
 def factors(n):
