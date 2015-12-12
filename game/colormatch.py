@@ -31,7 +31,7 @@ class ColorMatchGame(boolgame.BoolGame, colors.Colors):
 
 		self.syncKey = True
 
-		self.answer = maths.weightedRandomIndex([0.55, 0.45]) # 0.65 for 0 i.e wrong answer
+		self.answer = maths.weightedRandomIndex([0.5, 0.5])
 
 		if self.answer == 1:
 			col = self.previous
@@ -51,13 +51,13 @@ class ColorMatchGame(boolgame.BoolGame, colors.Colors):
 		self.curshape.delete()
 
 		if cshape == 'square':
-			self.curshape = draw.square(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
+			self.curshape = draw.square(self.width//2 - 75, 300, 150, color=self.colors[col])
 		elif cshape == 'hexagon':
-			self.curshape = draw.hexagon(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
+			self.curshape = draw.hexagon(self.width//2 - 75, 300, 75, color=self.colors[col])
 		elif cshape == 'triangle':
-			self.curshape = draw.triangle(self.width//2 - 75, 300, 150, filled=True, color=self.colors[col])
+			self.curshape = draw.triangle(self.width//2 - 75, 300, 150, color=self.colors[col])
 		else:
-			self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[col])
+			self.curshape = draw.circle(self.width//2 - 75, 300, 75, color=self.colors[col])
 		self.curshape.draw()
 
 		self.syncKey = False

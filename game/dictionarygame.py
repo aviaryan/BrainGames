@@ -24,7 +24,7 @@ class DictionaryGame(ChoiceGame):
 
 		self.loadGameSettings()
 		self.quesLeft = self.numQuestions
-		self.gameTime = self.numQuestions
+		self.gameTime = self.numQuestions # load after gamesettings as gameTime is not a game variable for this game
 
 		choice_y = self.lblQuestion.y - 80
 		self.choice1 = Choice('Choice 1', 0, self.width//2 - 100, choice_y )

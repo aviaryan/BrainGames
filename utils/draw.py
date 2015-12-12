@@ -80,7 +80,7 @@ def square(x, y, length, **kwargs):
 	return rectangle(x, y, length, length, **kwargs)
 
 
-def rectangle(x, y, length, breadth, filled=False, color=[]):
+def rectangle(x, y, length, breadth, filled=True, color=[]):
 	'''
 	returns a rectangle figure
 	'''
@@ -93,7 +93,7 @@ def rectangle(x, y, length, breadth, filled=False, color=[]):
 	return Figure(shape, GL_QUADS if filled else GL_LINE_LOOP)
 
 
-def circle(xp, yp, radius, filled=False, color=[], numPoints=70):
+def circle(xp, yp, radius, filled=True, color=[], numPoints=70):
 	'''
 	returns a circle figure
 	'''
@@ -110,14 +110,14 @@ def circle(xp, yp, radius, filled=False, color=[], numPoints=70):
 	return Figure(circle, GL_POLYGON if filled else GL_LINE_LOOP)
 
 
-def hexagon(xp, yp, radius, filled=False, color=[]):
+def hexagon(xp, yp, radius, filled=True, color=[]):
 	'''
 	returns a hexagon figure
 	'''
 	return circle(xp, yp, radius, filled, color, numPoints=6)
 
 
-def triangle(x, y, length, filled=False, color=[]):
+def triangle(x, y, length, filled=True, color=[]):
 	'''
 	returns a triangle figure
 	'''

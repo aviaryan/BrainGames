@@ -11,7 +11,7 @@ Simple games to boost your brain
 
 ### Thanks and Acknowledgments
 
-* Sounds were created using the utility BFxR ( http://www.bfxr.net/ )
+* Sounds were created using the utility Bfxr ( http://www.bfxr.net/ )
 * A lot of game ideas were drawn from the android game [Coach memory! Brain trainer](https://play.google.com/store/apps/details?id=bpi.master.coach.memory)
 * Scrabble game's idea was from [Quizup](http://quizup.com)
 * Scrabble game's worldlist was taken from http://www.mieliestronk.com/wordlist.html

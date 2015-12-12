@@ -55,7 +55,7 @@ class SubjectiveGame(gamearea.GameArea):
 			print('correct answer')
 		else:
 			self.updateScore(self.negative)
-			print('wrong answer', self.cText, self.answer)
+			print('wrong answer', self.answer)
 		self.addNew()
 		self.lblAnswer.text = ''
 		self.cText = ''
