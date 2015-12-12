@@ -30,7 +30,7 @@ class GameArea():
 		self.height = height
 		self.heading = pyglet.text.Label(title, font_size=30, x = width // 2, y = height - 60, anchor_x = 'center')
 
-		self.description = pyglet.text.Label(description, font_size=12, x = 30, y = self.heading.y - 50)
+		self.description = pyglet.text.Label(description, font_size=12, x = 30, y = self.heading.y - 50, width = self.width - 60, multiline = True)
 		self.descriptiontext = description
 
 		self.lblTimeLeft = pyglet.text.Label(str(self.gameTime), font_size=18, x = 40, y = self.heading.y)

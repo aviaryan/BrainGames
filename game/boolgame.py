@@ -1,6 +1,7 @@
 from game import gamearea
 from utils import draw
 from pyglet.window import key
+import pyglet
 
 
 class BoolGame(gamearea.GameArea):
@@ -13,7 +14,10 @@ class BoolGame(gamearea.GameArea):
 		self.gameStarted = False
 
 		super().__init__(title, width, height, **kwargs)
+		self.lblHelp = pyglet.text.Label('Use right arrow key for YES, left arrow key for NO', x = 30, y = 40, width = self.width - 60, multiline = True, font_size = 10, 
+			color = [200, 200, 200, 255])
 
+		self.window.push_handlers(on_draw = self.template_on_draw)
 		self.window.push_handlers(on_draw = self.on_draw)
 		
 
@@ -21,6 +25,7 @@ class BoolGame(gamearea.GameArea):
 		def on_key_press(symbol, modifiers):
 			if not self.gameStarted:
 				self.descStatus(False)
+				self.lblHelp.delete()
 				self.gameStarted = True
 				self.beginPlay()
 				self.addNew()
@@ -35,6 +40,10 @@ class BoolGame(gamearea.GameArea):
 
 	def on_draw(self):
 		pass
+
+
+	def template_on_draw(self):
+		self.lblHelp.draw()
 
 
 	def submit(self, ans):

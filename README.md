@@ -1,9 +1,9 @@
 # Brain Games
 
-Simple games to boost your brain
+Simple games to boost your brain. Made in Python
 
 
-### Screenshots
+## Screenshots
 
 ![Brain Games main page](http://s5.postimg.org/samoipo3b/braingames_1_0.png)
 

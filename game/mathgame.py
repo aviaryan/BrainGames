@@ -15,13 +15,13 @@ class MathGame(boolgame.BoolGame):
 
 	def __init__(self, width=600, height=500):
 
-		super().__init__(self.title, width, height, color = self.color)
+		super().__init__(self.title, width, height, description = self.descriptiontext, color = self.color)
 
 		self.negative = -10 # tryin to be fair
 		self.loadGameSettings()
 		
-		self.lblExp = pyglet.text.Label('..', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
-		self.window.dispatch_event('on_key_press', 21, '') # start the game, no need for description
+		self.lblExp = pyglet.text.Label('4 > 2', font_size=20, x = self.width//2, y = self.description.y - 100, anchor_x = 'center', anchor_y = 'center')
+		# self.window.dispatch_event('on_key_press', 21, '') # start the game, no need for description
 
 
 	def on_draw(self):
@@ -48,7 +48,7 @@ class MathGame(boolgame.BoolGame):
 		'''
 		Generates a random inequality for this game
 		'''
-		chComparator = maths.weightedRandomIndex([0.24, 0.38, 0.38])
+		chComparator = maths.weightedRandomIndex([0.2, 0.4, 0.4])
 		leftSize = maths.weightedRandomIndex([0.15, 0.85]) + 1
 		rightSize = maths.weightedRandomIndex([0.15, 0.85]) + 1
 
