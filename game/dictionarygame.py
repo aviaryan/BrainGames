@@ -1,10 +1,11 @@
 from game.choicegame import ChoiceGame, Choice
+from game.quesgame import QuesGame
 import json
 from random import randint
 from pyglet.clock import schedule_once
 
 
-class DictionaryGame(ChoiceGame):
+class DictionaryGame(QuesGame, ChoiceGame):
 
 	def __init__(self, width=700, height=550):
 
@@ -15,11 +16,9 @@ class DictionaryGame(ChoiceGame):
 			self.wlist += [(i, self.dic[i])]
 
 		ChoiceGame.__init__(self, 'Dictionary game', width, height, color='#0C276C')
-
-		self.numQuestions = 5
+		QuesGame.__init__(self, numQuestions = 10)
 		self.lblQuestion.font_size = 12
 		self.lblQuestion.width = self.width - 100
-		self.lblQuestion.height = 50
 		self.lblQuestion.multiline = True
 
 		self.loadGameSettings()
@@ -37,24 +36,12 @@ class DictionaryGame(ChoiceGame):
 		self.beginPlay(autotime = False)
 
 
-	def endTime(self):
-		pass
-
-
-	def submit(self, ans):
-		if ans == self.answer:
-			self.updateScore(self.positive)
-		else:
-			self.updateScore(self.negative)
-		self.showAnswer(ans == self.answer)
-
-
 	def showAnswer(self, status):
 		'''
 		show the correct answer to the user
 		'''
 		self.choices[ self.answer ].changecolor( [0,255,0] )
-		schedule_once(self.undo_showAnswer, 0.8 if status else 1.3)
+		schedule_once(self.undo_showAnswer, 0.6 if status else 1.1)
 
 
 	def undo_showAnswer(self, dt):
