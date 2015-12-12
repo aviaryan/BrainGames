@@ -18,6 +18,11 @@ See all screenshots at http://postimg.org/gallery/3hgxmibys/
 ![Scores page](http://s5.postimg.org/5jdlwb31z/score.png)
 
 
+## Downloads
+
+For Windows compiled executables, see [Brain Games Releases](https://github.com/aviaryan/BrainGames/releases). To use on Mac/Linux, just download zip of this repository and run `braingames.py`
+
+
 ### Requirements
 
 * Python 3
