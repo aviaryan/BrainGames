@@ -24,6 +24,7 @@ class DictionaryGame(QuesGame, ChoiceGame):
 		self.lblQuestion.font_size = 12
 		self.lblQuestion.width = self.width - 100
 		self.lblQuestion.multiline = True
+		self.negative = 0
 
 		self.loadGameSettings()
 		self.quesLeft = self.numQuestions
