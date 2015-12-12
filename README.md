@@ -26,7 +26,7 @@ See all screenshots at http://postimg.org/gallery/3hgxmibys/
 ### Requirements
 
 * Python 3
-* [Pyglet](https://bitbucket.org/pyglet/pyglet/wiki/Home) (`pip install pylget`)
+* [Pyglet](https://bitbucket.org/pyglet/pyglet/wiki/Home) (`pip install pyglet`)
 
 
 ### Thanks and Acknowledgments
@@ -34,5 +34,5 @@ See all screenshots at http://postimg.org/gallery/3hgxmibys/
 * Sounds were created using the utility Bfxr ( http://www.bfxr.net/ )
 * A lot of game ideas were drawn from the android game [Coach memory! Brain trainer](https://play.google.com/store/apps/details?id=bpi.master.coach.memory)
 * Scrabble game's idea was from [Quizup](http://quizup.com)
-* Scrabble game's worldlist was taken from http://www.mieliestronk.com/wordlist.html
+* Scrabble game's wordlist was taken from http://www.mieliestronk.com/wordlist.html
 * Dictionary taken from [this repo](https://github.com/aviaryan/gcide-dictionary-json)
