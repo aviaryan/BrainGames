@@ -16,14 +16,15 @@ class DictionaryGame(ChoiceGame):
 
 		ChoiceGame.__init__(self, 'Dictionary game', width, height, color='#0C276C')
 
-		self.gameTime = 0
+		self.numQuestions = 5
 		self.lblQuestion.font_size = 12
 		self.lblQuestion.width = self.width - 100
 		self.lblQuestion.height = 50
 		self.lblQuestion.multiline = True
 
-		self.numQuestions = 5
+		self.loadGameSettings()
 		self.quesLeft = self.numQuestions
+		self.gameTime = self.numQuestions
 
 		choice_y = self.lblQuestion.y - 80
 		self.choice1 = Choice('Choice 1', 0, self.width//2 - 100, choice_y )
@@ -33,7 +34,7 @@ class DictionaryGame(ChoiceGame):
 		self.choices = [self.choice1, self.choice2, self.choice3, self.choice4]
 
 		self.addNew()
-		self.beginPlay()
+		self.beginPlay(autotime = False)
 
 
 	def endTime(self):
@@ -42,20 +43,18 @@ class DictionaryGame(ChoiceGame):
 
 	def submit(self, ans):
 		if ans == self.answer:
-			print('correct answer')
 			self.updateScore(self.positive)
 		else:
-			print('wrong answer')
 			self.updateScore(self.negative)
-		self.showAnswer()
+		self.showAnswer(ans == self.answer)
 
 
-	def showAnswer(self):
+	def showAnswer(self, status):
 		'''
 		show the correct answer to the user
 		'''
 		self.choices[ self.answer ].changecolor( [0,255,0] )
-		schedule_once(self.undo_showAnswer, 1)
+		schedule_once(self.undo_showAnswer, 0.8 if status else 1.3)
 
 
 	def undo_showAnswer(self, dt):
@@ -65,6 +64,7 @@ class DictionaryGame(ChoiceGame):
 		self.choices[ self.answer ].changecolor()
 		if self.quesLeft == 0:
 			self.endGame()
+		self.updateTime()
 		self.addNew()
 
 

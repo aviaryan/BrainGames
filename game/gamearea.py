@@ -19,7 +19,8 @@ class GameArea():
 		self.negative = -20
 		self.syncKey = False
 		self.gameTime = 45
-		self.timeLeft = self.gameTime
+		# self.timeLeft self.quesLeft
+		self.numQuestions = 10
 		self.gameStatus = -1 # not started | started | over
 		self._loadSetting( settings.loadSettings() )
 
@@ -121,13 +122,13 @@ class GameArea():
 		return '<b><font size=+3 color=gray>' + str(self.score) + '</font></b>'
 
 
-	def beginPlay(self):
+	def beginPlay(self, autotime = True):
 		self.lblTimeLeft.text = str(self.gameTime)
 		self.timeLeft = self.gameTime
 		self.gameStatus = 0
 		if self.timeLeft == 0:
 			self.endTime()
-		else:
+		elif autotime:
 			pyglet.clock.schedule_interval(self.updateTime, 1)
 
 
@@ -138,7 +139,7 @@ class GameArea():
 		self.endGame()
 
 
-	def updateTime(self, dt):
+	def updateTime(self, dt=1):
 		'''
 		runs sec after sec, updating timeLeft
 		'''
@@ -161,6 +162,7 @@ class GameArea():
 		self.gameTime = config.get('gameTime', self.gameTime)
 		self.positive = config.get('positive', self.positive)
 		self.negative = config.get('negative', self.negative)
+		self.numQuestions = config.get('numQuestions', self.numQuestions)
 
 
 	def endGame(self):
