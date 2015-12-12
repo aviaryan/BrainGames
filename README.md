@@ -5,9 +5,13 @@ Simple games to boost your brain. Made in Python
 
 ## Screenshots
 
+See all screenshots at http://postimg.org/gallery/3hgxmibys/
+
 ![Brain Games main page](http://s5.postimg.org/samoipo3b/braingames_1_0.png)
 
 ![Math Game](http://s5.postimg.org/5zytiqqt3/mathgame.png)
+
+![Color Meaning](http://s5.postimg.org/cgcdmkoqf/colormeaning.png)
 
 ![Dictionary Game](http://s5.postimg.org/rawdn08xj/dictionary.png)
 
