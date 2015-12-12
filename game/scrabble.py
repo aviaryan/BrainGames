@@ -5,12 +5,16 @@ from utils import maths
 
 class Scrabble(ChoiceGame):
 
+	title = 'Word Scrabble'
+	color = '#004040'
+	descriptiontext = 'Choose the correct option for the jumbled word'
+	gameid = 'scrabble'
+
 	def __init__(self, width=700, height=500):
 
-		self.gameid = 'scrabble'
 		self.data = loadWordlist()
 
-		super().__init__('Word Scrabble', width, height, color = '#004040')
+		super().__init__(self.title, width, height, color = self.color)
 
 		self.negative = -10
 		self.loadGameSettings()

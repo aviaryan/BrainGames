@@ -1,11 +1,11 @@
 import pyglet
 
-from game import colormatch
-from game import mathgame
-from game import calcgame
-from game import scrabble
-from game import colormeaning
-from game import dictionarygame
+from game.colormatch import ColorMatchGame
+from game.mathgame import MathGame
+from game.calcgame import CalcGame
+from game.scrabble import Scrabble
+from game.colormeaning import ColorMeaningGame
+from game.dictionarygame import DictionaryGame
 from features import settings, gameover
 from utils.draw import rectangle, color2Array
 
@@ -14,51 +14,16 @@ from utils.draw import rectangle, color2Array
 # print( x.start() )
 # exit()
 
-
-GAMES = [
-	{
-		'name': 'Color Match',
-		'gameid': 'colormatch',
-		'func': colormatch.ColorMatchGame,
-		'desc': 'Match if the previous color is same as current color',
-		'color': '#0B3526'
-	},
-	{
-		'name': 'Color Meaning',
-		'gameid': 'colormeaning',
-		'func': colormeaning.ColorMeaningGame,
-		'desc': 'Check if the meaning on the left is same as color on the right',
-		'color': '#0B3526'
-	},
-	{
-		'name': 'Math Game',
-		'gameid': 'mathgame',
-		'func': mathgame.MathGame,
-		'desc': 'Tell if the inequality is true or not',
-		'color': '#004000'
-	},
-	{
-		'name': 'Calc Game',
-		'gameid': 'calcgame',
-		'func': calcgame.CalcGame,
-		'desc': 'solve expressions and write answers',
-		'color': '#400000'
-	},
-	{
-		'name': 'Scrabble',
-		'gameid': 'scrabble',
-		'func': scrabble.Scrabble,
-		'desc': 'Choose the correct option for the jumbled word',
-		'color': '#004040'
-	},
-	{
-		'name': 'Dictionary game',
-		'gameid': 'dictionary',
-		'func': dictionarygame.DictionaryGame,
-		'desc': 'Choose the word which means the same as text provided',
-		'color': '#0C276C'
-	}
-]
+gms = [ColorMatchGame, ColorMeaningGame, MathGame, CalcGame, Scrabble, DictionaryGame]
+GAMES = []
+for i in gms:
+	GAMES += [{
+		'name': i.title,
+		'gameid': i.gameid,
+		'func': i,
+		'desc': i.descriptiontext,
+		'color': i.color
+	}]
 
 
 class BrainGames():

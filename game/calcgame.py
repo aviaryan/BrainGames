@@ -6,12 +6,16 @@ from utils import maths
 
 class CalcGame(SubjectiveGame):
 
+	title = 'Calculate Game'
+	color = '#400000'
+	descriptiontext = 'Calculate Math expressions, fast !!'
+	gameid = 'calcgame'
+	
 	operators = ['+', '-', '*', '/']
 
 	def __init__(self, width=600, height=500):
 
-		self.gameid = 'calcgame'
-		super().__init__('Calculate Game', width, height, color = '#400000')
+		super().__init__(self.title, width, height, color = self.color)
 
 		self.loadGameSettings()
 

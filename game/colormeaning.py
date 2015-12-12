@@ -6,13 +6,17 @@ from utils import maths
 
 class ColorMeaningGame(boolgame.BoolGame, Colors):
 
+	title = 'Color Meaning'
+	color = '#0B3526'
+	descriptiontext = 'Check if meaning of text on left is same as color of text on right'
+	gameid = 'colormeaning'
+
 	def __init__(self, width=700, height=500):
 
-		self.gameid = 'colormeaning'
 		self.colors = [self.red[:], self.white[:], self.green[:], self.yellow[:]]
 		self.colornames = ['red', 'white', 'green', 'yellow']
 
-		boolgame.BoolGame.__init__(self, 'Color Meaning', width, height, description='Check if meaning of text on left is same as color of text on right', color = '#0B3526')
+		boolgame.BoolGame.__init__(self, self.title, width, height, description=self.descriptiontext, color = self.color)
 		self.loadGameSettings()
 
 		self.leftBtn = RectangularButton('yellow', 1, self.width//2 - 120, self.description.y - 100, w = 120, h = 100, color = self.solarized, textcolor=self.red, textsize = 22)

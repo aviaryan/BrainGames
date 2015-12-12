@@ -5,14 +5,17 @@ from utils import maths
 
 class MathGame(boolgame.BoolGame):
 
+	title = 'Math Game'
+	color = '#004000'
+	descriptiontext = 'Tell if the inequality is true or not'
+	gameid = 'mathgame'
+
 	comparators = ['==', '<', '>']
 	operators = ['+', '-', '*', '/']
 
-
 	def __init__(self, width=600, height=500):
 
-		self.gameid = 'mathgame'
-		super().__init__('Math Game', width, height, color = '#004000')
+		super().__init__(self.title, width, height, color = self.color)
 
 		self.negative = -10 # tryin to be fair
 		self.loadGameSettings()

@@ -7,15 +7,19 @@ from pyglet.clock import schedule_once
 
 class DictionaryGame(QuesGame, ChoiceGame):
 
+	title = 'Dictionary Game'
+	color = '#0C276C'
+	descriptiontext = 'Choose the word which means the same as text provided'
+	gameid = 'dictionary'
+
 	def __init__(self, width=700, height=550):
 
-		self.gameid = 'dictionary'
 		self.dic = loadDictionary()
 		self.wlist = []
 		for i in self.dic:
 			self.wlist += [(i, self.dic[i])]
 
-		ChoiceGame.__init__(self, 'Dictionary game', width, height, color='#0C276C')
+		ChoiceGame.__init__(self, self.title, width, height, color=self.color)
 		QuesGame.__init__(self, numQuestions = 10)
 		self.lblQuestion.font_size = 12
 		self.lblQuestion.width = self.width - 100

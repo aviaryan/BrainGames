@@ -4,13 +4,17 @@ from utils import draw, maths, colors
 
 class ColorMatchGame(boolgame.BoolGame, colors.Colors):
 
+	title = 'Color Match'
+	color = '#0B3526'
+	descriptiontext = 'Check if previous color is same as the current one'
+	gameid = 'colormatch'
+
 	def __init__(self, width=700, height=500):
 
-		self.gameid = 'colormatch'
 		self.colors = [ self.red , self.green , self.blue , self.yellow ]
 		self.shapes = ['circle', 'square', 'hexagon', 'triangle']
 
-		boolgame.BoolGame.__init__(self, 'Color Match', width, height, description='Check if previous color is same as the current one', color = '#0B3526')
+		boolgame.BoolGame.__init__(self, self.title, width, height, description=self.descriptiontext, color = self.color)
 		self.loadGameSettings()
 
 		self.curshape = draw.circle(self.width//2 - 75, 300, 75, filled=True, color=self.colors[0])
