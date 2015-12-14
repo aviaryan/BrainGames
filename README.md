@@ -23,6 +23,11 @@ See all screenshots at http://postimg.org/gallery/3hgxmibys/
 ![Scores page](http://s5.postimg.org/5jdlwb31z/score.png)
 
 
+### Documentation (in progress)
+
+See [Wiki](https://github.com/aviaryan/BrainGames/wiki)
+
+
 ### Requirements
 
 * Python 3
