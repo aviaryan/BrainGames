@@ -68,8 +68,8 @@ class MathGame(boolgame.BoolGame):
 		generates an expression
 		'''
 		oprPDF = [0.35, 0.20, 0.30, 0.15]
-		numRange = [(1,1) , (1,9) , (9,15) , (15,25)]
-		numPDF = [0.01, 0.69, 0.27, 0.03]
+		numRange = [(1,9) , (9,15) , (15,25)]
+		numPDF = [0.5, 0.4, 0.1]
 
 		n1 = round(maths.weightedRandomRange(numPDF, numRange))
 		if size == 1:
@@ -77,7 +77,10 @@ class MathGame(boolgame.BoolGame):
 		if size > 2:
 			print('Not implemented')
 		# size = 2
-		opr = self.operators[ maths.weightedRandomIndex(oprPDF) ]
-		n2 = maths.getSecondOperand(n1, opr, multiplyLimit = 300, numPDF = numPDF, numRange = numRange)
+		if maths.isPrime(n1):
+			opr = self.operators[ maths.weightedRandomIndex([0.4, 0.25, 0.33, 0.02]) ]
+		else:
+			opr = self.operators[ maths.weightedRandomIndex(oprPDF) ]
+		n2 = maths.getSecondOperand(n1, opr, multiplyLimit = 200, numPDF = numPDF, numRange = numRange)
 
 		return str(n1) + ' ' + opr + ' ' + str(n2)

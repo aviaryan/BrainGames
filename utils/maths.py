@@ -19,11 +19,21 @@ def getSecondOperand(n1, opr, multiplyLimit = 100, numPDF=[1.0], numRange=[(1,9)
 	return int(n2)
 
 
+def isPrime(n):
+	'''
+	is prime. return True for primes (including 1)
+	'''
+	if n<4: 
+		return 1
+	else:
+		return all( n%i for i in range(2,n) )
+
+
 def factors(n):
 	'''
 	get factors of a number
 	http://stackoverflow.com/a/6800214/2295672
-	'''  
+	'''
 	return list( set(reduce(list.__add__,
 				([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0))) )
 
