@@ -34,8 +34,8 @@ def factors(n):
 	get factors of a number
 	http://stackoverflow.com/a/6800214/2295672
 	'''
-	return list( set(reduce(list.__add__,
-				([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0))) )
+	return set(reduce(list.__add__,
+				([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
 
 def randint(a,b):
@@ -46,10 +46,15 @@ def getNiceDivisor(n):
 	'''
 	get a divisor for n which completely divides it
 	'''
-	x = factors(n)
-	choice = randint(0, len(x)-1)
-	n2 = x[choice]
-	return n2
+	x = sorted(factors(n))
+	if len(x) > 2:
+		prob = weightedRandomIndex([0.2, 0.8])
+		if prob == 1:
+			return x[ randint(1, len(x)-2) ]
+		else:
+			return x[ randint(0, len(x)-1) ]
+	else:
+		return x[ randint(0, len(x)-1) ]
 
 
 def getPositiveMinus(n):
@@ -105,4 +110,4 @@ if __name__ == '__main__':
 	for i in range(100):
 		x = weightedRandomRange(j, [(-1,1) , (1,2) , (2,3)])
 		print(x)
-	print(factors(27))
+	print( sorted(factors(27)) )
