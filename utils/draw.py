@@ -42,6 +42,14 @@ class RectangularButton():
 		self.draw()
 
 
+	def delete(self):
+		'''
+		delete the button (along with caption - label)
+		'''
+		self.figure.delete()
+		self.label.delete()
+
+
 
 class Figure():
 	'''

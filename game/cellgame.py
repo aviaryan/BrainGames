@@ -16,9 +16,42 @@ class CellGame(QuesGame, GameArea):
 		self.window.push_handlers(on_draw = self.template_on_draw)
 		self.window.push_handlers(on_draw = self.on_draw, on_mouse_release = self.on_mouse_release)
 
+		self.addNew()
+		self.beginPlay(autotime = False)
+
 
 	def template_on_draw(self):
 		pass
+
+
+	def genTiles(self, n, m):
+		'''
+		generates the tiles on the screen
+		n = rows
+		m = columns
+		'''
+		cutoff_w = 70
+		GAP = 3
+		if n > 5 or m > 5:
+			GAP = 2
+		for i in self.choices:
+			i.delete()
+		self.choices = []
+
+		xs = 140
+		ys = self.description.y - 30
+		m_gap = GAP
+		n_gap = GAP
+		m_w = ( self.width - xs*2 - (m-1)*m_gap ) // m
+		if m_w > cutoff_w:
+			xs += ((m_w - cutoff_w) * m)//2
+			m_w = cutoff_w
+		Cell._w = m_w
+		k = 0
+		for i in range(n):
+			for j in range(m):
+				self.choices += [ Cell('', k, xs + j*(m_w+m_gap), ys - i*(m_w+n_gap)) ]
+				k += 1
 
 
 	def on_mouse_release(self, x, y, button, modifiers):
@@ -37,11 +70,12 @@ class CellGame(QuesGame, GameArea):
 
 
 	def check_answer(self):
+		print('hola')
 		pass
 
 
 	def addNew(self):
-		pass
+		self.genTiles(3,3)
 
 
 	def on_draw(self):

@@ -11,7 +11,7 @@ from utils.draw import rectangle, color2Array
 
 from sys import exit
 from game.cellgame import CellGame
-x = CellGame('ADASDASDDS', 700, 500)
+x = CellGame('ADASDASDDS', 600, 500)
 print( x.start() )
 exit()
 
