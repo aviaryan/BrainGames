@@ -9,10 +9,11 @@ from game.dictionarygame import DictionaryGame
 from features import settings, gameover
 from utils.draw import rectangle, color2Array
 
-# from sys import exit
-# x = dictionarygame.DictionaryGame()
-# print( x.start() )
-# exit()
+from sys import exit
+from game.cellgame import CellGame
+x = CellGame('ADASDASDDS', 700, 500)
+print( x.start() )
+exit()
 
 gms = [ColorMatchGame, ColorMeaningGame, MathGame, CalcGame, Scrabble, DictionaryGame]
 GAMES = []
