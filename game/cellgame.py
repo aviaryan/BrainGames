@@ -24,33 +24,33 @@ class CellGame(QuesGame, GameArea):
 		pass
 
 
-	def genTiles(self, n, m):
+	def genTiles(self, n):
 		'''
 		generates the tiles on the screen
 		n = rows
 		m = columns
 		'''
 		cutoff_w = 70
-		GAP = 3
-		if n > 5 or m > 5:
-			GAP = 2
+		gap = 3
+		if n > 5:
+			gap = 2
 		for i in self.choices:
 			i.delete()
 		self.choices = []
 
 		xs = 140
 		ys = self.description.y - 30
-		m_gap = GAP
-		n_gap = GAP
-		m_w = ( self.width - xs*2 - (m-1)*m_gap ) // m
-		if m_w > cutoff_w:
-			xs += ((m_w - cutoff_w) * m)//2
-			m_w = cutoff_w
-		Cell._w = m_w
+		w = ( self.width - xs*2 - (n-1)*gap ) // n
+		if w > cutoff_w:
+			xs += ((w - cutoff_w) * n)//2
+			w = cutoff_w
+		# ys =
+
+		Cell._w = w
 		k = 0
 		for i in range(n):
-			for j in range(m):
-				self.choices += [ Cell('', k, xs + j*(m_w+m_gap), ys - i*(m_w+n_gap)) ]
+			for j in range(n):
+				self.choices += [ Cell('', k, xs + j*(w+gap), ys - i*(w+gap)) ]
 				k += 1
 
 
@@ -75,7 +75,7 @@ class CellGame(QuesGame, GameArea):
 
 
 	def addNew(self):
-		self.genTiles(3,3)
+		self.genTiles(6)
 
 
 	def on_draw(self):
